@@ -19,16 +19,28 @@
 
 		index:索引值
 		input:整个字符串
+
+		g:全局查找,修饰符.
+
+		+  :
+			量词,最少一个最多无限.
+		连续查找
 	*/
 
-	let str = "mi6ao34v";
+	let str = "mi6Vvaov3vvvv4v";
 
 	console.log(str.match(/6/));
 	//["6", index: 2, input: "mi6aov"]
 
 	
 
-	console.log(str.match(/\d/g));
+	console.log(str.match(/\d+/g));
+
+	console.log(str.match(/x/g));
+
+	console.log(str.match(/v+/gi));
+
+
 </script>	
 </body>
 </html>

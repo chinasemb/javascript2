@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		replace:替换
+
+		string.replace(""||//,""||回调函数)
+
+		返回的是被替换的新的字符串
+
+		第一个字符串:
+				被替换的字符串
+		第二个字符串:
+				用什么字符串替换
+		遍历数组长度:数数数组的个数0123456789……
+	*/
+	//let str = "mia4o5v6gff455gh435ger4535";
+
+	// console.log(str.replace("m","M")); 
+
+	// console.log(str.replace(/\d/g,"X"));
+
+	//每当正则匹配到一项的时候,就调用一次这个函数
+
+	let str = "中国共产党总书记,习近平说:'法轮功是邪教!'";
+
+	console.log(str.replace(/共产党|习近平|法轮功|邪教/g,function($0){
+
+		let temp = "";
+
+		for(let i=0;i<$0.length;i++){
+			temp += "*";
+		}
+		return temp;
+	}));
+</script>	
+</body>
+</html>
