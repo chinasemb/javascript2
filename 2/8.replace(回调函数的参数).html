@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+		回调函数的参数(默认)
+
+			$0  -> 	每次匹配到的字符
+
+			$1  ->	这些个匹配字符的索引(下标)
+
+			$2  ->  整个字符串
+
+			$3  ->   以后都是undefined.
+	*/
+	let str = "dsj21234retg54";
+
+	str.replace(/\d/g,function($0,$1,$2){
+		console.log($2)
+	})
+
+</script>	
+</body>
+</html>
