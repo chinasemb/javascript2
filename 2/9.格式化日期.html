@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+			let str = "2017-12-11";
+
+			"2017.12.11";
+
+			"2017....12...11";
+
+			"2017年12月11日"
+
+			\D :  一个非数字
+
+			子项   :   
+					()
+					replace 的回调函数的形参中的子项的内容.
+					子项是从左向右依次数.
+
+					每有一个子项,就在$0后面增加一个参数,去代表子项,
+					超过子项参数:
+								index
+								input(整个字符串)
+								undefined
+	*/
+	let str = "2017-12-11";
+
+	console.log(str.replace(/(\d+)\D+(\d+)\D+(\d+)/,function($0,$1,$2,$3,$4,$5,$6){
+		return $1 +"年"  +$2 +"月"  +$3+"日";
+	}))
+</script>	
+</body>
+</html>
