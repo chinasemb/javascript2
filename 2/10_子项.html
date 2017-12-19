@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/* 
+		let str = "/(((\d)+)\D)+(\d+)\D+(\d+)/"
+		为何没加g   
+					因为匹配的规则值匹配了一次.
+
+		注意 ：如果使用量词，在量词前的字符算作最后一个，
+				.....----     ：   -
+				2017          ：   7
+				12            ：   1
+				11            ：   1
+
+	*/
+
+	let str = "2017.....----12---11";
+
+	str.replace(/((\d)+)((\D)+)((\d)+)\D+((\d)+)/,function($0,$1,$2,$3,$4,$5,$6,$7,$8){
+		console.log($7);
+	})
+</script>	
+</body>
+</html>

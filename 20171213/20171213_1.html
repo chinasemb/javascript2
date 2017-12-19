@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+		规则，模式，强大的字符串匹配工具，擅长检索模糊范围的字符串
+		//
+		RegExp
+
+		test()  :     正则的方法，布尔值。
+		string.search(字符串和正则) 找到回复位置，没找到返回 -1
+		string.match   找到返回数组并且把找到的字符存数组中
+			index input 
+
+		string.replace(""|//,""|fn)
+
+		默认没有子项的。
+		function ($0,$1,$2,$3){
+			$0就是本次匹配的字符
+			$1index
+			$2input
+			$3...undefined
+		}
+		
+		有子项的
+			1个
+			function($0,$1,$2,$3){
+				$0就是本次匹配的字符
+				$1第一个子项
+				$2index
+				$3input
+				$4...undefined
+			}
+		
+
+	*/
+
+	let str = "miaov132455";
+
+	console.log(str.replace(/(\d)+/,function($0,$1){
+		console.log($1);
+	}))
+</script>	
+</body>
+</html>
