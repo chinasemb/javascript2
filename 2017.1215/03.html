@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+		在面向对象中,一般遇到首字母大写就说这个函数是构造函数
+
+		new 一元运算符 
+						专门运算函数
+						1.使用new运算符之后,函数调用可以不加括号(就爱哭哦好的目的是传参)
+						2.new完之后,函数体内的this变为带函数名的对象
+									window ->    fn()
+						3.new完之后,函数的默认返回值为带函数名的对象
+
+						4.如果return 是一个简单类型,返回值仍然是默认的带函数名的对象
+
+						5.如果return后面为复合类型,那么返回值就是return后面的复合类型
+						
+
+
+	*/
+
+	function Person(name,age){
+		let obj = {};
+		obj.name = name;
+		obj.age = age ;
+		obj.say = function(){
+			alert(this.name);
+		}
+		return obj;
+	}
+	let p1 =new Person ("EX","13");
+	p1.say();
+</script>	
+</body>
+</html>
