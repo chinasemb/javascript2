@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+		贪婪模式
+				尽可能 的多匹配
+				\d+
+		懒惰模式
+				尽可能少的匹配
+				\d    2155666  ->   2
+		例子  :   a开头c结尾 中间是任意字符一个或者多个
+
+		? :开启懒惰模式
+	*/
+
+	let str = "aec";
+
+	console.log(str.match(/a.？c/g));
+</script>	
+</body>
+</html>

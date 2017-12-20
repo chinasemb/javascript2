@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Template</title>
+</head>
+<body>
+	<div id = "app"></div>
+<script>
+	
+	function render(str,obj){
+		return str.replace(/{{([a-z]+)}}/g,function($0,$1){
+			return obj[$1];
+		})
+	}
+	let v = render(
+		"我是 <span>{{name}}</span>,年龄<span>{{age}}</span>,性别<span>{{sex}}</span>",
+		{
+			name:"X",
+			age:"18",
+			sex:"人妖"
+		}
+		
+		);
+	console.log(v);
+	var App = document.getElementById('app');
+	App.innerHTML = v;
+</script>	
+</body>
+</html>
