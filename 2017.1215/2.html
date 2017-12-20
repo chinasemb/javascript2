@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		面向对象：极为重要
+
+		面向过程： 关注点
+							功能是如何实现
+							越复杂越难
+		面相对象： 关注点
+							谁来做这件事
+							越复杂越简单
+							优势：团队协作
+
+		描述汽车：
+					有轮子
+					交通工具
+					烧汽油
+					有颜色     归为一类
+		人类：
+					右胳膊
+					有腿
+					会工具
+					会沟通
+					会交流
+					高级动物
+		面向对象就是把具有相同特征的内容归为一类，把它封装起来，再把描述性的一些特性挂在这个类的原型下，这种编程方式就叫做面向对象。
+		封装函数  ->    归类
+		警察  ：
+				人
+				有警服
+				上过军校
+				有大盖帽
+
+		构造函数：
+					构造对象的函数，return 一个对象
+
+					p1 p2 p3 实例化对象 
+
+		js的面向对象:
+					三大特征:
+							1.抽象   :把具有相同特征的内容抽离出来
+							2.封装   :包在一个函数里
+							3.继承	 :子类继承父类
+		以前:
+
+				new Date()  new Array()   new RegExp()  
+
+
+	*/
+	// let name = "留恋"；
+	// let age  = "18";
+
+	// let name2 = "番茄"；
+	// let age2  = "15";
+
+	// let name3 = "Apile"；
+	// let age3  = "16";
+
+
+	function Person (name,age){//工厂方式（构造函数）
+		let obj ={};//初始材料
+		obj.name = name ;
+		obj.age = age;
+		obj.say = function(){
+			alert(this.name)
+		};
+
+		//加工
+		return obj;//出厂
+			
+		}
+
+	let p1 = Person("留恋","18");
+
+	p1.say();
+
+	console.log(p1);
+</script>	
+</body>
+</html>
