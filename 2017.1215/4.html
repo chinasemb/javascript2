@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		面向对象:
+					把复用性比较高
+					1.抽象  ->   抽离出相同或者复用率很高的代码
+					2.封装  ->   把这些代码封装到一个函数当中
+					3.继承  ->   子类把父类的属性  继承过来
+
+		类:
+				归类
+		构造函数   ->构造对象的函数  (返回一个对象的函数)   工厂函数
+
+		构造函数的返回值 :    实例化之后的对象
+
+		使用完 new 之后
+						1.默认return 带函数名的对象
+						2.this指向   带函数名的对象
+						3.如果return 是一个简单类型,返回值仍然是默认的带函数名的对象
+						如果return后面为复合类型,那么返回值就是return后面的复合类型
+						4.不用括号.函数可以直接运行,如果加括号,就是在传参
+	*/
+
+	function Person(name,age){
+		// let obj = {};
+		this.name = name;
+		this.age = age ;
+		this.say = function(){
+			alert(this.name);
+		}
+		// return obj;
+	}
+	let p1 =new Person ("EX","13");
+
+	console.log(new Date);
+</script>	
+</body>
+</html>
