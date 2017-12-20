@@ -36,14 +36,25 @@
 				$4...undefined
 			}
 		
+		修饰符  
+				i 忽略大小写
+				g 全局
+
+		量词
+			+
+
+		转义符
+		//     ->   \/  \/      用\ 把/ 转一下义
 
 	*/
 
 	let str = "miaov132455";
 
 	console.log(str.replace(/(\d)+/,function($0,$1){
-		console.log($1);
+		console.log($1);//5
 	}))
+
+
 </script>	
 </body>
 </html>

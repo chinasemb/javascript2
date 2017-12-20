@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text"id ="txt">
+	<button id ="btn">看看是不是QQ号</button>
+<script>
+	/*
+		匹配QQ号
+				1.全是数字
+				2.不能以零开头
+				3.数字的个数  5-12
+				4. ^开头
+				5.$结尾
+
+		在使用正则的时候，如果可以匹配到规则，只要匹配到一次就直接返回。
+		惰性。
+
+	*/
+	console.log(/1[89][2-9][0-9]100/.test("20"));
+	console.log(/^1[89]$^[2-9][0-9]$^100$/.test("10"));
+	console.log(/\uff1f/.test("？"));
+	const Txt = document.getElementById('txt');
+	const Btn = document.getElementById('btn');
+
+	Btn.onclick = function(){
+		let val = Txt.value;
+
+		if(!val.trim()){
+			alert("请输入数字！！！")
+		}
+		if(/^[1-9]\d{4,11}$/.test(val)){
+			alert("是QQ")
+		}else{
+			alert("不是QQ")
+		}
+		
+	}
+</script>	
+</body>
+</html>
