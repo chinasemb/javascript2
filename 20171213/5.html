@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+		\d 一个数字
+		\D 一个非数字
+		\s 一个空格
+		\S 非空格
+		\w 字母，数字，下划线_
+		\W 非字母，非数字，非下划线_
+		\b 单词边界    如果英文后面跟着中文那么算有边界符  边界符 可以做很多事情
+		\B 非单词边界
+	*/
+	
+	//let str = "21343432\'";
+
+	let str = "  sadewe  ";
+	console.log(/\s/.test(str));
+	console.log(str.replace(/^\s+|\s+$/g,"*"));//去掉首尾空格
+
+	console.log("hehe ha静ha ".replace(/\b/g,"&"));
+
+	console.log("hehe ha静ha ".replace(/\B/g,"&"));
+</script>	
+</body>
+</html>
