@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		js的面向对象
+				一种编程方式
+
+		把具有相同特征的内容归为一类,封装到一个函数中,属性就挂载在这个类的里面,带有功能性的方法挂载在这个类的原型上
+
+		prototype的值为对象  
+
+		如果prototype下没有要找的方法或者属性,那么会区fn.prototype.__proto__==Object.prototy
+
+	*/
+
+	function Person (name){//构造函数  默认加return
+		this.name = name ;
+	};
+	Person.prototype.say = function(){//方法挂载在类的原型上
+		alert(this.name);
+	}
+
+	Person.say = function(){
+		alert("Person的say");
+	}
+	Function.prototype.say = function(){//方法挂载在类的原型上
+		alert("大FN");
+	}
+
+	Function.say = function(){
+		alert("FN的say");
+	}
+
+	p.say = function(){
+		alert("p的say");
+	}
+
+	let p = new Person("experience");
+
+	p.say();
+</script>	
+</body>
+</html>

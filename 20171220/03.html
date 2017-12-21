@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+		包装对象:
+					在使用简单类型的属性或者方法的时候,吧该数据类型的内置对象调出来,去获取属性或者方法,使用完之后再偷偷地销毁
+		valueOf() 
+
+		for...in 
+
+		A instanceof B
+			左值是否为右值的实例化对象
+
+		obj.constructor
+			查看某个对象的构造函数  是谁
+
+			注意:   这个指向容易改变(在赋值的时候就会变),就算变了.代码依然会执行
+			并不影响辅助查看的作用
+
+			如果改了,手动修正即可
+
+		继承:
+				拷贝继承:
+						属性继承:调用父类通过call 的方式修正指向
+				for in
+						只拷贝父类原型自身的属性
+				原型继承 :
+						
+
+	*/
+	let str = new String ("miaov");
+
+	console.log(str.valueOf());
+
+	let obj = {name:"90"}
+</script>	
+</body>
+</html>
