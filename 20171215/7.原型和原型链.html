@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		prototype    fn   原型是在函数上的
+
+		除了函数，对象是没有原型的
+
+		__proto__  		  原型链 :
+									只要是实例化对象,就有原型链.
+		
+		function fn (){
+	
+		}  因为它是一个实例化对象 ，他就有 原型链  ，又因为它是函数 ，所以它也有原型，所以它既有原型，又有原型链。
+
+
+		new Function 
+
+		实例化对象 的   __proto__   ===    构造函数的原型
+
+						(p1.__proto__ === Person.prototype)
+						__proto__是实例化对象与构造函数原型的桥梁
+		
+		构造函数的原型下的属性或者方法，只给他的实例化对象使用
+
+
+	*/
+
+	let obj = {};
+
+	console.log(obj);
+
+	function Person(name,age){
+		this.name = name;
+		this.age = age;
+	}
+
+	Person.prototype.say = function(){
+		alert(this.name);
+	}
+
+	let p1 = new Person("番茄",12);
+	console.log(p1);
+
+	// console.dir(p1.__proto__ === Person.prototype);
+
+	console.dir(p1);
+</script>	
+</body>
+</html>

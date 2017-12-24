@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		原型:
+				在函数创建的时候,自身带着的一个属性,这个属性的值为---->对象
+				prototype  :   对象
+
+				解决性能问题的
+
+				[]    实例化对象
+				 -> 
+				 new Array()   构造函数
+
+				 如果实例化对象上没有某个属性或者方法,
+				 那么会去构造函数下的***原型***下去查找有没有这个方法
+
+
+	*/
+	// function fn(){
+	
+	// 	}
+	// console.dir(fn);
+
+	let arr = new Array("和");
+
+	arr.push = function(){
+		alert("呵呵!");
+	};
+
+	arr.push();
+
+	console.dir(arr);
+</script>	
+</body>
+</html>

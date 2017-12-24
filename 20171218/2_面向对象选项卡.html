@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.active{
+			background:yellow;
+		}
+		div{
+			width: 150px;
+			height: 100px;
+			border:1px solid #000;
+			display:none;
+		}
+		div.show{
+			display:block;
+		}
+
+	</style>
+</head>
+<body>
+	<input type="button" class ="active" value = "按钮1">
+	<input type="button" value = "按钮2">
+	<input type="button" value = "按钮3">
+	<div class ="show">first</div>
+	<div>second</div>
+	<div>third</div>
+<script>
+	
+	/*
+		
+	*/
+	function Tab (){
+		this.btns = Array.from(document.querySelectorAll("input"));
+		this.divs = document.querySelectorAll("div");
+
+		Tab.prototype.init = function (){
+			let that = this;
+			this.btns.forEach(function(ele,i){
+				ele.onclick = function(){
+					that.change(i);
+				}
+			})
+		}
+		Tab.prototype.change = function (){
+			this.btns.forEach(function(ele,i){
+				ele.className = "";
+			})
+
+			this.btns[i].className = "active";
+		}
+
+
+	}
+
+	let t = new Tab;
+
+	t.init();
+</script>	
+</body>
+</html>

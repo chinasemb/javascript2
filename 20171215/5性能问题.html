@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+		原型:
+				prototype:  类似于css中的class 
+				
+
+	*/
+	function Person(name,age){
+		this.name =name ;
+		this.age  =age ;
+		// this.say = function(){
+		// 	alert(this.name)
+		// }
+	}
+
+	Person.prototype.say = function(){
+		alert(this.name);
+	}
+
+	let p1 = new Person("ex",12);
+	let p2 = new Person("rt",17);
+
+	console.log(p1 == p2);
+
+	console.log(p1,p2);
+
+	console.log(p1.say == p2.say);
+
+	// p1.say();
+	// p2.say();
+
+	let arr = [100];
+	let arr2 = [100];
+
+	arr.push(5);
+	arr2.push(6);
+
+	console.log(arr != arr2);
+
+	console.log(arr.push == arr2.push);//arr共享了同一个push
+</script>	
+</body>
+</html>
