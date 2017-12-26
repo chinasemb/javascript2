@@ -29,34 +29,43 @@
 <script>
 	
 	/*
-		
+		把按钮和div 抽象出来,归为一类.
 	*/
 	function Tab (){
+		console.log(this);
 		this.btns = Array.from(document.querySelectorAll("input"));
 		this.divs = document.querySelectorAll("div");
-
-		Tab.prototype.init = function (){
-			let that = this;
-			this.btns.forEach(function(ele,i){
-				ele.onclick = function(){
-					that.change(i);
-				}
-			})
 		}
-		Tab.prototype.change = function (){
-			this.btns.forEach(function(ele,i){
-				ele.className = "";
-			})
+	// Tab();
 
-			this.btns[i].className = "active";
-		}
+	Tab.prototype.init = function(){
+		console.log(this);
+		let _this = this;
+		this.btns.forEach(function(ele,i){
+			ele.onclick = function(){
+				console.log(this);
+				_this.change(i);
+			}
+		})
+	}
 
+	Tab.prototype.change = function(i){
+		console.log(this);
+
+		this.btns.forEach(function(e,i){
+			e.className = "";
+			this.divs[i].className = "";
+
+		},this);
+		this.btns[i].className = "active";
+		this.divs[i].className = "show";
 
 	}
 
 	let t = new Tab;
 
 	t.init();
+	
 </script>	
 </body>
 </html>
