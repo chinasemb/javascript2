@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		原型
+				prototype 
+				类似于class 
+
+		面向对象的编程方式的一般写法
+
+						属性  挂在   类           里面
+						方法  挂在   类的原型     里面
+
+
+	*/
+	function Person (name,age){
+		this.name=name;
+		this.age =age;
+		// this.say =function(){
+		// 	alert(this.name);
+	}
+	
+
+	Person.prototype.say = function(){
+		alert(this.name);
+	}
+
+
+	let p1 = new  Person("历练",12);
+	let p2 = new  Person("番茄",13);
+
+	let p3 =  Person("历练",12);
+	let p4 =  Person("番茄",13);
+
+	console.log(p1 == p2);
+	console.log(p3 == p4);
+
+	p1.say();
+	p2.say();
+
+	console.log(p1.say  ==  p2.say);
+
+	let arr = [100];
+	let arr2 = [100];
+
+	arr.push(1);
+	arr2.push(2);
+
+	console.log(arr.push == arr2.push);
+
+</script>	
+</body>
+</html>

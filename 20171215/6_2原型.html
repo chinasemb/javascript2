@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+			原型
+					在函数创建的时候,自身带着的一个属性这个属性的值为***对象***
+
+					这个对象有2个属性:constructor,__proto__
+
+					解决性能的问题
+
+					[]是实例化对象 ->new Array() Array是构造函数
+
+					如果实例化对象上没有某个方法或者属性 就会
+					去构造函数下的原型下面查找有没有这个方法
+					有的话就直接调用
+					没有的话继续查找
+	*/
+	// function fn (){
+
+	// }
+
+	// console.dir (fn);
+
+	let arr = new Array("ewwd");
+
+	arr.push = function(){
+		alert("hehe");
+	}
+
+	arr.push();
+
+	console.dir(arr);
+</script>	
+</body>
+</html>

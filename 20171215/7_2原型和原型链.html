@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		prototype 原型
+
+		__proto__  原型链
+
+						只要是实例化对象，就有原型链
+
+						对象是没有原型的(function除外)
+
+								function({
+	
+								}) 也是一个 Function的实例化对象的简写
+
+								new Function
+								它既有原型又有原型链 
+
+						实例化对象的__proto__ ===  构造函数的原型
+
+						__proto__是 实例化对象 和 构造函数的原型 的桥梁
+
+						legendaray
+						构造函数的原型下的属性或者方法,只给他的实例化对象使用
+
+
+
+	*/
+	function Person (name,age){
+		this.name=name;
+		this.age =age;
+	}
+	
+
+	Person.prototype.say = function(){
+		alert(this.name);
+	}
+
+	let p1 = new Person ("liulian",12);
+
+	// console.dir(p1.__proto__  === Person.prototype);
+
+	console.dir(p1);
+</script>	
+</body>
+</html>

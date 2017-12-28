@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+		面向过程: 
+				关注点是->功能是如何去实现
+		面向对象:
+				关注点是谁来做这件事
+				越复杂越简单
+
+				优势:团队协作开发
+
+		面向对象的官方解释:
+				面向对象是对现实世界的理解和抽象的方法,
+				是计算机编程技术发展到一定能够阶段后的产物.
+				大神:关于鸡蛋的不同的理解
+
+		描述汽车  :   
+				有轮子 烧汽油 交通工具 有颜色   归为一类
+
+		人类      : 
+				有胳膊有腿  会使用工具   会沟通会交流 高级动物
+
+		面向对象   就是把具有相同特征的内容归为一类,再把描述性的特性挂在这一类的原型下,这种编程方式就叫面向对象.
+
+		封装函数  -> 归类
+
+		警察   :
+					人类+警察的特性 =警察
+		构造函数
+				构造对象的函数
+
+		js的面向对象:
+					三大特征:
+								1.抽象
+										把具有相同特征的内容抽离出来
+								2.封装
+										包在一个函数中
+								3.继承
+										子类继承父类
+
+		new Date
+		new Array
+		new Regexp
+	*/
+
+	let name = "榴莲";
+	let age  = 13;
+
+	let name2 = "番茄";
+	let age2   = "122";
+
+	let name3 = "Apile"
+	let age3   = 14;
+
+	function person (name,age){//工厂方式也叫构造函数(构造出一个对象的函数)
+		let obj ={};//原材料
+		obj.name = name ;//生产过程
+		obj.age  = age ;
+
+		obj.say = function(){
+			alert(this.name);
+		}
+
+		return obj;//出厂
+	}
+//p1p2p3实例化对象  
+					//构造函数的返回值就是实例化对象
+	let p1 = person ("榴莲",15);
+	let p2 = person ("番茄",12);
+	let p3 = person ("Apile",14);
+
+	p1.say();
+
+	let d = new Date;//用的是他的返回值
+</script>	
+</body>
+</html>

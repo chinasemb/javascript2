@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	/*
+		legendaray
+				  ***构造函数的原型下的属性或者方法,只给他的实例化对象使用
+	*/
+	
+	function fn (){
+
+	}
+
+	fn.prototype.say = function(){
+		alert("原型的say")
+	}
+	fn.say = function(){
+		alert("fn的say")
+	}
+	let f = new fn ;
+	f.say();
+	fn.say();
+</script>	
+</body>
+</html>

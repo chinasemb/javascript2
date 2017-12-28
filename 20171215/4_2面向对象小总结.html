@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		js面向对象:
+					1.抽象  
+							抽离出相同|复用率很高的代码
+					2.封装
+							把这些抽象的带代码装一个函数中
+					3.继承
+							子类 把父类的继承过来
+
+		构造函数  构造对象的函数 (返回一个对象的函数)
+		工厂函数
+
+		构造函数的返回值 为实例化对象
+
+		使用完new之后
+				1.默认return  带函数名的对象
+				2.this指向带函数名的对象
+				3.new完之后,如果
+				return 后面为简单类型,
+				那么返回值仍然是
+				默认带函数名的对象
+
+				new完之后,如果
+				return 后面为复合类型,
+				那么返回值是
+				return后面的符合类型
+
+	*/
+	function Person (name,age){
+		//
+		let obj = {};
+		// obj.name = name ;
+		// obj.age=age;
+		this.name = name ;
+		this.age=age;
+
+		this.say=function(){
+			alert(this.name);
+		}
+		// return obj;不需要return
+	}
+
+	let p1 = new Person("榴莲",13);
+	console.log(p1);
+
+	console.log(new Date);//系统函数
+</script>	
+</body>
+</html>
