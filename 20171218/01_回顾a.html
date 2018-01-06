@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<script>
+	
+	/*
+		js的面向对象 :
+					一种编程方式编程思维
+
+		把具有相同功能的内容归为一类,封装到一个函数中,属性就挂在类(函数)里面,带有功能性的方法挂载这个类的原型上.
+
+		prototype 它的值为对象 ,如果 prototype下没有找的属性或者方法
+		那么会去 (fn.prototype.__proto__ == Object.prototype ) 实例化对象的
+		原型下的原型链下面 去找   而  Object.prototype === fn.prototype.__proto__  所以 在Object 下面挂什么  就是原型链 下面的 东西 
+
+		原型no   --->    原型链no    ---->      (实例化对象)的 (原型链下的方法===Object 下的 原型上的方法 )
+
+		往Object 的原型上面 加属性(方法)   ===  
+
+		实例化对象的原型链上面添加属性(方法)
+	*/
+
+	function Person (name,age){//构造函数 (工厂方式)
+		this.name = name ;
+		this.age = age ;
+	}
+	// Person.prototype.say = function (){
+	// 	alert(this.name);
+	// }
+
+	// Person.say =
+	 function(){
+	// 	alert("Person的say");
+	// }
+
+	Object.prototype.say = function(){
+		alert("OBJ");
+	}
+
+	Function.prototype.say = function (){
+		alert("大 FN ");
+	}
+
+	Function.say = function (){
+		alert("FN 的 say ");
+	}
+
+	let p = new Person("榴莲");
+
+	// p.say = function (){
+	// 	alert("p 的 say ");
+	// }
+
+	// p.say();
+
+	Person.say();
+
+	console.log(Object.prototype === Person.prototype.__proto__);
+
+	console.dir(p);
+</script>	
+</body>
+</html>
