@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+}
+</style>
+</head>
+<body>
+    <div id="box">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+    </div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    // $('#box').on('click',function(){
+    //     alert(1);
+    // });
+    // $('#box').on('click',function(){
+    //     $('#box').off('click');
+    // });
+
+    /*
+        ev.target.nodeName == 'SPAN'
+
+        jQuery  ev是二次封装对象
+
+        originalEvent 原生的事件对象
+    */
+    // $('#box').on('click','span',function(){
+    //     alert($(this).text());
+    // });
+    $('#box').on('click.hehe',function(ev){
+       alert(123);
+        console.log(ev);
+    });
+
+    $('span').click(function(ev){
+        alert(1);
+        // ev.originalEvent.cancelBubble = true;
+        ev.stopPropagation();
+    })
+
+//    $(document).on('click',function(){
+//         $('#box').off('click.hehe');
+//     });
+
+</script> 
+</body>
+</html>

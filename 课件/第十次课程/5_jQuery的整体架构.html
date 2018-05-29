@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        无new化操作
+    */
+   
+    (function(global,f){
+        f(global);
+    })(typeof window !== 'undefined'?window:this,function(window,noGlobal){
+        function jQuery(select){
+                return new fn(select);
+        }
+        jQuery.prototype = {
+            constructor:jQuery,
+            css:function(){
+                //链式  return this;
+                if(arguments.length === 2){
+                    this[0].style[arguments[0]] = arguments[1];
+                }
+                return this;
+            }
+        }
+
+        var fn = jQuery.init = function(select){
+            this[0] = document.querySelector(select);
+        }
+        
+        jQuery.init.prototype = jQuery.prototype;
+
+        window.$ = window.jQuery = jQuery;
+
+    });
+
+
+//    let $ = new jQuery();
+
+    var jQuery = 123;
+
+    // var $ = $('#box');
+
+    $('#box').css('width','100px')
+    .css('height','100px')
+    .css('background','red');
+
+    // console.log($);
+
+    // console.log();
+
+</script>
+</body>
+</html>

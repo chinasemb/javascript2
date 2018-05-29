@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        string.match(//);
+            如果被正则匹配，那么返回一个数组，把匹配的内容放到这个数组中
+
+            如果没有匹配，返回null
+
+            ["6", index: 2, input: "mi6aov"]
+
+           *** 如果匹配到了一个字符，那么会有2个属性，但是length是1
+
+            index:索引
+            input:整个字符串
+
+            如果是匹配到多个字符，那么是没有这2个属性的。
+
+        \d 一个数字
+
+        g:修饰符  全局查找
+
+        +:
+            量词
+            最少1个，最多不限
+
+    */
+
+    // let str = 'mi6aov';
+
+    // console.log(str.match(/6/));  //[6];  ["6", index: 2, input: "mi6aov"]
+
+    let str = '26M7ds9M123nr6ke93M20fmmd2';
+
+    // console.log(str.match(/\d+/g));
+
+    // console.log(str.match(/x/));  //null;
+
+    console.log(str.match(/m+/ig)); //修饰符位置是可以更换的
+
+</script>
+</body>
+</html>

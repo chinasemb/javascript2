@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+#box div{
+    display: none;
+}
+#box div.show{
+    display: block;
+}
+
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    /*
+        组件:
+            方便复用（复杂的功能|复用率很高的）
+    */
+
+   /*
+    可配置项
+        宽		width
+        高		height
+        是否拖拽	isDrag
+        内容        contents
+        按钮     btns
+
+   */
+
+   class Darg {
+        constructor(obj){
+            this.disX = 0;
+            this.disY = 0;
+            this.box = obj;
+            this.init();
+        }
+        init(){
+            let that = this;
+            this.box.onmousedown = function(ev){
+                that.down(ev);
+            }
+        }
+        down(ev){
+            let _this = this;
+            this.disX = ev.clientX - this.box.offsetLeft;
+            this.disY = ev.clientY - this.box.offsetTop;
+
+            document.onmousemove = function(ev){
+                    _this.move(ev);
+            }
+            document.onmouseup = function(ev){
+                    _this.up(ev);
+            }
+            return false;
+        }
+        move(ev){
+                this.box.style.left = ev.clientX - this.disX + 'px';
+                this.box.style.top = ev.clientY - this.disY + 'px';
+        }
+        up(ev){
+            document.onmousemove = document.onmouseup = null;
+        }
+
+   }
+
+   class Tab {
+       constructor(obj){
+            this.opt = {
+                obj:null,
+                btns:['新闻','社会','娱乐','体育'],
+                contents:['番茄和榴莲在一起了','大兴赶人了','xx又xx，xxx','标王...'],
+                width:200,
+                height:150,
+                isDrag:false
+            }
+            //有配置走配置，没配置走默认
+            Object.assign(this.opt,obj);
+            this.box = document.querySelector(this.opt.obj);
+            this.init();
+       }
+        init(){
+            let {obj} = this.opt;
+            this.boxStyle();
+            this.createBtns();
+            this.createDiv();
+            this.events();
+            if(obj.isDrag){
+                
+                new Darg(this.box);
+            }
+        }
+        createBtns(){
+            let html = '';
+            this.opt.btns.forEach((c,i)=>{
+                    html += `
+                        <button class="${i==0?'active':''}">${c}</button>
+                    `; 
+            });
+            //    console.log(this.box);
+            this.box.innerHTML = html;
+        }
+
+        createDiv(){
+            let html = '';
+            this.opt.contents.forEach((c,i)=>{
+                    html += `
+                        <div class="${i==0?'show':''}">${c}</div>
+                    `; 
+            });
+            this.box.innerHTML += html;
+        }
+       events(){
+            this.btns = Array.from(this.box.querySelectorAll('button'));
+            this.divs = this.box.querySelectorAll('div');
+            let that = this; 
+           this.btns.forEach((e,i)=>{
+              e.onclick = function(){
+                that.change(i);
+              }
+           });
+        }
+        change(index){
+                this.btns.forEach((e,i)=>{
+                    e.className = '';
+                    this.divs[i].className = '';
+                });
+                this.btns[index].className = 'active';
+                this.divs[index].className = 'show';
+        }
+       boxStyle(){
+           this.box.style.cssText = `width:${this.opt.width}px;
+           height:${this.opt.height}px;
+           border:1px solid #000;
+           position:absolute;
+           top:0;
+           left:0;
+           `;
+       }
+
+   }
+
+    /*
+        有配置走配置，没配置走默认。
+    */
+
+   let t = new Tab({
+       obj:'#box',
+       isDrag:true,
+       width:300
+   });
+
+
+
+</script>
+</body>
+</html>

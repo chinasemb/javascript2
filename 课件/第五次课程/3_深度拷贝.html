@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    /*
+        深拷贝:
+            不仅仅会复制第一层的数据，如果里面还有对象，会继续进行复制，直到复制到全是基本数据类型为止
+
+        浅拷贝：只会复制对象的第一层数据
+
+    */
+    let arr = [1,2,3,4,[5],{}];
+
+    let arr2 = deepClone(arr);
+
+    // console.log(arr2);
+
+    //let arr2 = Object.assign([],arr);
+
+    // arr2.push(5);
+
+    arr2[4].push(6);
+
+    function deepClone(obj){ //深度克隆
+        let o = obj.push?[]:{};
+        for(let attr in obj){
+            //值为复合类型
+            if(typeof obj[attr] === 'object' && obj[attr]!=null){
+                o[attr] = deepClone(obj[attr]);
+            }else{
+                o[attr] = obj[attr];
+            }  
+        }
+        return o;
+    }
+
+    console.log(arr);
+
+   
+</script>
+</body>
+</html>

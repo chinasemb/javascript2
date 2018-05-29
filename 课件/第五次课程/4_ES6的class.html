@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        class Person {
+            constructor(name,age){
+                this.name = name;
+                this.age = age;
+            }
+            say(){
+                alert(this.name);
+            }
+        }
+
+
+        注意事项
+            类名必须通过new来调用
+            不存在变量提升
+            constructor可写可不写
+    */
+
+    //声明
+    // class Person {
+    //     constructor(name,age){
+    //         this.name = name;
+    //         this.age = age;
+    //     }
+    //     say(){
+    //         alert(this.name);
+    //     }
+    // }
+
+    //表达式
+    let Person = class {
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        say(){
+            alert(this.name);
+        }
+    }
+
+    let p = new Person('独行',20);
+
+    p.say();
+    console.dir(p);
+
+
+</script>
+</body>
+</html>

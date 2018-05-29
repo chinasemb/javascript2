@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{changeNum}} -->
+        <div v-text="str" @click="fn"></div>
+        <!-- {{changeNum}} -->
+        <!-- {{fn()}} -->
+        {{num}}
+        <hezi :n="num"></hezi>
+    </div>
+<script src="vue.js"></script>
+<script>
+
+    Vue.component('hezi',{
+        // props:["n"],
+        props:{
+            n:[Number,String]
+        },
+        template:`
+            <div>
+                <p>{{n}}</p>    
+            </div>
+        `,
+        // data(){
+        //     return {
+               
+        //     }
+        // }
+    });
+
+    let v = new Vue({
+        el:'#app',
+        data:{
+           str:'病毒真厉害',
+           num:true
+        },
+        methods:{
+            fn(){
+                //this.num ++;
+                let a = this.num + 'hehe';
+                console.log(a);
+                return a;
+            }
+        },
+        computed:{
+            changeNum:function(){
+                return this.num < 10?'0'+this.num:''+this.num;
+            }
+        }
+    });
+
+    // setTimeout(function(){
+    //     v.num = 6;
+    // },2000)
+
+
+</script>
+</body>
+</html>

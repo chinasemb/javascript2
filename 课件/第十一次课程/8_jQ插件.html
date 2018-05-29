@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <textarea cols="30" rows="10"></textarea>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        工具方法： 
+            $.ajax()
+            $.trim()
+            $.isArray()
+        功能方法:
+            $('#box').css();
+            $('#box').prop();
+
+        
+    */
+
+    // $.extend(true); //深拷贝
+
+    // let arr = [1,2,3,4,[5]];
+
+    // let arr2 = $.extend([],arr); //默认是个浅拷贝
+
+    // arr2[4].push(5);
+
+    // console.log(arr);
+
+    // $.extend({
+    //     leftTrim:function(str){
+    //         return str.replace(/^\s+/g,'');
+    //     }
+    // });
+
+    // console.log($.leftTrim('    榴莲呵呵哒     '));
+
+    $.fn.extend({
+        srollH:function(){
+        //   console.log( this[0] )
+          return this[0].scrollHeight;
+        }
+    });
+    
+    $(document).click(function(){
+        console.log($('textarea').srollH());//被内容撑开的高度
+    });
+
+
+    /*
+        写一个选项卡的插件
+
+        在页面中引入一个自己写的插件库
+        创建一个<div id="app"></div>
+
+        $('#app').tab();
+
+        页面中就会有个选项卡
+
+        t = $('#app').tab({
+            title:[1,2,3,4,5],
+            content:[1111,2222,333,4444,5555]
+        });
+
+        JQ拖拽
+
+        扩展:
+            t.play();
+
+    */
+    
+
+
+
+
+</script>
+</body>
+</html>

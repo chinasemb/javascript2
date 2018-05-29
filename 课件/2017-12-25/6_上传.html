@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#div1{
+    width:500px;
+    height: 30px;
+    border: 1px solid #000;
+    position: relative;
+}
+#div2{
+    width:0%;
+    height: 30px;
+    background: skyblue;
+    text-align: center;
+    line-height: 30px;
+    font-size:20px;
+    color:#999;
+    transition: .3s;
+}
+#span{
+    position: absolute;
+    top:0;
+    width:100%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
+</style>
+</head>
+<body>
+    <input type="file" id="f">
+    <input type="button" value="上传" id="btn"/>
+
+    <div id="div1">
+        <span id="span">0%</span>
+        <div id="div2"></div>
+    </div>
+<script>
+    /*
+        let ff = new FormData();
+		ff.append(key,value);
+
+        ff.append('user',v.value);
+        ff.append('pass',u.value);
+
+
+    */
+    const f = document.getElementById('f');
+    const btn = document.getElementById('btn');
+    const span = document.getElementById('span');
+    const div2 = document.getElementById('div2');
+
+    btn.onclick = function(){
+        const ajax = new XMLHttpRequest;
+        ajax.open('post','post_file.php');
+        // console.dir(f);
+        // ajax.onload = function(){
+        //     let data = JSON.parse(ajax.responseText);
+        //     console.log(data);
+        // }
+        // console.dir();
+        /*
+            ev.loaded  本次上传的体积
+
+            ev.total   总体积
+
+        */
+
+        ajax.upload.onprogress = function(ev){
+            let scale = Math.round((ev.loaded / ev.total)*100);
+            div2.style.width = scale + '%';
+            span.innerText = scale + '%';
+        }
+
+        let ff = new FormData();
+        ff.append('file',f.files[0]);
+        //console.log();
+        // ajax.send('file='+f.files[0]);
+        ajax.send(ff);
+
+    }
+</script>
+</body>
+</html>

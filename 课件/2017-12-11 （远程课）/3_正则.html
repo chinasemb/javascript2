@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        正则:
+            简写:  /匹配的规则/
+            标准写法:  new RegExp(//||'','');
+
+                第一个参数：
+                    正则或者字符串
+                第二个参数:
+                    字符串（修饰符）
+    */
+
+    let str = 'abc';
+
+    // console.log(/a/); //在str字符串中去匹配a
+
+    console.log(new RegExp('/a/'));  //  /a/  /\/a\//
+
+    /*
+        a -> /a/
+
+        /a/ ->  /\/a\//   如果要写/那么要用\转义。
+    */
+
+    // console.log(new RegExp(/a/));
+
+    //  \转义符 
+
+    // alert('通知:\n今天晚上加通宵班!');
+
+
+
+
+</script>
+</body>
+</html>

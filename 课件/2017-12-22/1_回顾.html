@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    class Person {
+        constructor(name,age){
+            this.name = name;
+            this.age = age;
+        }
+        say(){
+            alert(this.name);
+        }
+    }
+
+    class Police extends Person{
+        constructor(name,age,job){
+            super(name,age);
+        }
+        kongfu() {
+            alert(this.name+'会'+'真气波');
+        }
+    }
+
+    let p1 = new Person('汪同学',18);
+
+    let p2 = new Police('榴莲',20);
+    // p1.say();
+
+    // p2.kongfu();
+
+
+    let obj = {
+        "name":"90-ING",
+        "age":18,
+        "arr":[1,2,3,4]
+    }
+
+    // let obj2 = JSON.parse(JSON.stringify(obj));
+
+    // obj2.arr.push(5);
+
+    // console.log(obj);
+
+
+    
+
+
+
+    console.log(p1);
+</script>
+</body>
+</html>

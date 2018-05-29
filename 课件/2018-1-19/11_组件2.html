@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <hezi></hezi> -->
+        <he-zi></he-zi>
+        <zi-he></zi-he>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        ***顶层只能有一个元素
+        把子组件当做标签对放入，父组件下
+
+        如果子组件使用烤串命名，放进父级下的时候就得用烤串命名
+        如果名字有大写，得写成烤串式的标签
+            Vue.component('heZi',he);
+
+        ***子组件data必须是个函数，必须要有return {}
+
+    */
+    let he = {
+        template:`
+            <div>
+                <div @click="++num">我是小盒子{{num}}</div>
+                <div>{{num}}</div>    
+            </div>
+        `,
+        data(){
+            return {
+                num:0
+            }
+        }
+    }
+
+    let ha = {
+        template:`
+            <div>
+                <button @click="fn">按钮</button>
+                <div>{{str}}</div>    
+            </div>
+        `,
+        data(){
+            return {
+                str:'miaov'
+            }
+        },
+        methods:{
+            fn(){
+                this.str = 'hahaha';
+            }
+        }
+    }
+
+
+
+    new Vue({
+        el:'#app',
+        components:{
+            'he-zi':he,
+            'zi-he':ha
+        }
+    });
+</script>
+</body>
+</html>

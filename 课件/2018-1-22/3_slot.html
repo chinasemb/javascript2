@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <hezi>
+            <p slot="h">香菇</p>
+            <p slot="hh">hehe</p>
+        </hezi>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        页面中如果有多个slot那么必须要加name属性
+
+        调用的时候也必须加上slot="name"才可以使用
+    */
+
+    Vue.component('hezi',{
+        template:`
+            <div>
+                <div class="1">
+                    <slot name="h">
+                        <p>蓝瘦</p>
+                    </slot>    
+                    <slot name="hh">
+                        <p>呵呵</p>
+                    </slot>
+                </div>      
+            </div>
+        `
+    })
+
+    let v = new Vue({
+        el:'#app',
+        data:{
+           str:'病毒真厉害',
+           num:10
+        }
+    });
+
+
+
+</script>
+</body>
+</html>

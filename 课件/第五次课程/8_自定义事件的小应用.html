@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:0;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    class Custom{
+        constructor(){
+            this._events = {}; //存所有的事件名和函数
+        }
+        on(type,fn){
+            this._events[type] = this._events[type] || [];
+            this._events[type].push(fn);
+        }
+        tirgger(type){
+            if( !this._events[type] )return;
+            this._events[type].forEach(e=>{
+                e.call(this);
+            })
+        }
+    }
+
+    class Drag extends Custom {
+        constructor(obj){
+            super();
+            this.disX = 0;
+            this.disY = 0;
+            this.box = obj;
+            this.init();
+        }
+        init(){
+            let that = this;
+            // console.log(this);
+            this.box.onmousedown = function(ev){
+                that.down(ev);
+                that.tirgger('按下');
+            }
+        }
+        down(ev){
+            let _this = this;
+            this.disX = ev.clientX - this.box.offsetLeft;
+            this.disY = ev.clientY - this.box.offsetTop;
+
+            document.onmousemove = function(ev){
+                    _this.move(ev);
+                    _this.tirgger('抚摸');
+            }
+            document.onmouseup = function(ev){
+                    _this.up(ev);
+                    _this.tirgger('抬起');
+            }
+            return false;
+        }
+        move(ev){
+                this.box.style.left = ev.clientX - this.disX + 'px';
+                this.box.style.top = ev.clientY - this.disY + 'px';
+        }
+        up(ev){
+            document.onmousemove = document.onmouseup = null;
+        }
+   }
+   const box = document.getElementById('box');
+   let d = new Drag(box);
+
+
+   d.on('按下',function(){
+      this.box.style.background = 'skyblue';
+   });
+
+   d.on('按下',function(){
+      this.box.style.border = '1px solid #000';
+   });
+
+   d.on('抬起',function(){
+      this.box.style.background = 'red';
+   });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- {{handle}} -->
+        {{str}}
+    </div>
+<script src="vue.js"></script>
+<script>
+    let v = new Vue({
+            el:'#app',
+            data:{
+                str:'miaov'
+            },
+            computed:{
+                handle(){
+                    return this.str.split('').reverse().join('')
+                }
+            },
+            watch:{
+                str(val,oldV){
+                    console.log(val,oldV);
+                }
+            }
+
+        });
+
+    setTimeout(function(){
+        v.str = 'ketang';
+    },2000)
+
+</script>
+</body>
+</html>

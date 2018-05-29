@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // let obj = {
+    //     name:'90-ing',
+    //     get abc(){
+    //         return this.name;
+    //     },
+    //     set abc(val){
+    //         //console.log(val);
+    //         this.name = val;
+    //     }
+    // }
+    // obj.name = 'success';
+
+    // obj.abc = 5;
+
+    // obj.name = 10;
+    // console.log(obj.abc);
+
+    /******************************/
+
+    /*
+        进一次get ++
+    */
+    
+    let b = 0;
+    let obj = {
+        get a(){
+            if(b > 2){
+                b = 2;
+            }
+            return  this.a = ++b;
+        }
+    }
+    
+    console.log(obj.a == 1 && obj.a == 2); //true;
+
+</script>
+</body>
+</html>

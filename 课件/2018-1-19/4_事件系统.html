@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="add(num,$event)">点击增加{{num}}</button>
+        <ul>
+            <li v-for="(val,key) in arr">{{val}}</li>
+        </ul>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        如果事件函数名没有加括号，那么在函数中的第一个参数自然就是event对象
+        如果加了括号，那么没有传值就为undefined，如果想要获取到
+        event对象，那么传入一个$event;
+    */
+    new Vue({
+        el:'#app',
+        data:{
+            arr:[1],
+            num:0,
+        },
+        methods:{
+            add(n,ev){
+               // num ++;
+                this.num = ++ this.num
+                this.arr.push(this.num);
+
+                console.log(ev,n);
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <input name="newsletter" />
+    <input name="milkman" />
+    <input name="newsboy" />
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        各行变色
+            even
+                匹配所有索引值为偶数的元素，从 0 开始计数
+                效果为奇数
+            odd
+                匹配所有索引值为奇数的元素，从 0 开始计数
+                效果为偶数
+            lt
+                小于index
+            gt
+                大于index
+
+            #,.,type="button"
+
+            *=  全等
+            ^=  开头等
+            !=  不等
+            $=  结尾等
+    */
+    $('li:even').css('background','red');
+    $('li:odd').css('background','yellow');
+
+    $('li:lt(2)').css('background','blue');
+    $('li:gt(2)').css('background','skyblue');
+
+    $('li:eq(2)').css('background','yellow');
+
+    console.log($("input[name^='news']"));
+
+</script>
+</body>
+</html>

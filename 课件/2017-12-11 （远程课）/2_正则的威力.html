@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        正则表达式的介绍：
+            规则、模式、强大的字符串匹配工具(擅长于检索**模糊范围**字符串的这些操作)
+    */
+
+    /*
+        1.找到下列字符串中的数字并且放到数组中。
+    */
+
+    let str = '123dshd3j2k434891k34m343m3232s45dsf4x6';
+
+    let arr = [];
+
+    let temp = '';
+
+    /*
+        [3,2,434891,34,343...]
+
+        temp = ''
+
+        temp += 1
+
+        temp += 2  -> 12
+
+        temp += 3  -> 123
+
+        temp = '';
+
+        isNaN(parseInt('d'))
+
+        !false  -> true;
+    */
+
+    for(var i=0;i<str.length;i++){
+        //是数字的情况
+        if(!isNaN(parseInt(str[i]))){
+            temp += str[i];
+        }else{
+            //不是数字的时候才会push
+            if(temp){
+                arr.push(temp);
+                temp = '';
+            }
+        }
+    }
+    if(temp){
+        arr.push(temp);
+        temp = '';
+    }
+    // console.log(temp);
+
+    // console.log(arr);
+
+    console.log(str.match(/\d+/g));
+
+
+</script>
+</body>
+</html>

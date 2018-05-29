@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <!-- <button @click="up">按钮{{str.split('').reverse().join('')}}</button> -->
+       {{handle}}
+       {{fn()}}
+       <!-- {{str}} -->
+
+    </div>
+<script src="vue.js"></script>
+<script>
+    let v = new Vue({
+            el:'#app',
+            data:{
+                // num:0
+                str:'miaov'
+            },
+            methods:{
+                fn(){
+                    return this.str;//.split('').reverse().join('')
+                }
+            },
+            computed:{
+                handle(){
+                    return this.str.split('').reverse().join('')
+                }
+            }
+        });
+
+    setTimeout(function(){
+        v.str = 'ketang';
+    },2000)
+
+</script>
+</body>
+</html>

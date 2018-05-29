@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+width:100px;
+height: 100px;
+background: red;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        hide(时间)
+        show(时间)
+
+        animate()
+
+        $('#box').animate({
+            left:0,
+        },500,function(){
+
+        });
+
+        delay(延迟时间)
+
+        123[,,4,5,6]
+        
+        阻止运动:
+            stop();
+
+    */
+
+    $(document).click(function(){
+        // $('#box').hide(500);
+        // $('#box').toggle(500);
+        // $('#box').slideUp(500);
+        // $('#box').slideToggle(500);
+
+        $('#box').animate({
+            width:400
+        },1000);
+        $('#box').stop().animate({
+            height:400
+        },1000);
+    });
+</script>
+</body>
+</html>

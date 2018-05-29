@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        replace:
+            替换
+
+            string.replace(字符串||正则,字符串||回调函数);
+
+            返回的是被替换的新字符串
+
+            第一个参数：
+                要替换什么字符
+
+            第二个参数:
+                替换成什么字符串
+    */
+
+    // let str = 'm1i2a5o3v'; //miao数字v
+
+    // console.log(str.replace('m','M'));
+
+    // console.log(str.replace(/\d/g,'数字'));
+
+    // %$*^&
+    let str = '中国共产党总书记,习近平说:"法轮功是邪教!"';
+
+    /*
+        || 或者  
+        正则中 | 或者
+    */
+    // console.log(str.replace(/共产党|习近平|法轮功|邪教/g,'*'));
+
+
+    /*
+        每当正则匹配到一项之后就调用这个函数
+    */
+
+    let s = str.replace(/共产党|习近平|法轮功|邪教/g,function($0){
+        // console.log($0);
+        let temp = '';
+        for(let i=0;i<$0.length;i++){
+            temp += '*';
+        }
+        return temp;
+    });
+
+    console.log(s);
+    // console.log();
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

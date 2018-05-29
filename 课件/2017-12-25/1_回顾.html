@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    用户名:<input type="text" id="user">
+    <button id="btn">提交</button>
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    $('#btn').click(function(){
+
+        const ajax = new XMLHttpRequest;
+
+        ajax.open('post','php/post.php');
+
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState === 4){
+                if(ajax.status >= 200 && ajax.status <= 207){
+                    // let data = JSON.parse(ajax.responseText);
+                    console.log(ajax.responseText);
+                }
+            }
+        }
+        ajax.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+        ajax.send('user='+$('#user').val());
+
+
+        // const ajax = new XMLHttpRequest;
+
+        // ajax.open('get','php/get_json.php?user='+$('#user').val());
+
+        // ajax.onreadystatechange = function(){
+        //     if(ajax.readyState === 4){
+        //         if(ajax.status >= 200 && ajax.status <= 207){
+        //             let data = JSON.parse(ajax.responseText);
+        //             console.log(data);
+        //         }
+        //     }
+        // }
+
+        // ajax.send();
+
+
+        // $.ajax({
+        //     url:'php/get_json.php',
+        //     data:{
+        //         user:$('#user').val()
+        //     },
+        //     dataType:'json',
+        //     success:function(data){
+        //         //console.log(data);
+        //         // let data1 = JSON.parse(data);
+        //         // console.log(data1);
+        //         if(data.code == 0){
+        //             $('#user').css('color','green');
+        //         }else if(data.code == 1){
+        //             $('#user').css('color','red');
+        //         }
+        //     }
+        // });
+    });
+</script>
+
+</body>
+</html>

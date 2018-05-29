@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        jQuery:
+            1.72
+
+        原生
+
+        $(function(){
+            //ready事件
+        });
+
+        
+    */
+
+    $('#box').css({
+        width:200,
+        height:200,
+        background:'red',
+        position:'absolute'
+    }).animate({
+        top:200
+    }).delay(1000).animate({
+        left:300
+    });
+</script>
+</body>
+</html>

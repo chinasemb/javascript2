@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script src="myjsonp_1.0.js"></script>
+<script>
+
+    jsonp({
+        // url:'https://api.douban.com/v2/movie/search',
+        url:'https://api.douban.com/v2/book/search',
+        data:{
+            // q:'变形金刚'
+            q:'javascript',
+            start:20
+        },
+        success:function(data){
+            console.log(data);
+        }
+    });
+
+</script>
+</body>
+</html>

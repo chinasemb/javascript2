@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    用户名:<input type="text" id="user">
+    <button id="btn">提交</button>
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    /*
+        因为IE浏览器地址栏在识别中文的时候，
+        会把中文转成URI编码格式,这样服务器是不认识的
+
+        解决:
+            就把中文转成URI编码格式即可
+        
+
+    */
+    $('#btn').click(function(){
+
+        // const ajax = new XMLHttpRequest;
+
+        // ajax.open('get','php/get_json.php?user=' + encodeURI($('#user').val()));
+
+        // ajax.onreadystatechange = function(){
+        //     if(ajax.readyState === 4){
+        //         if(ajax.status >= 200 && ajax.status <= 207){
+        //             let data = JSON.parse(ajax.responseText);
+        //             console.log(data);
+        //         }
+        //     }
+        // }
+
+        // ajax.send();
+
+
+        const ajax = new XMLHttpRequest;
+
+        ajax.open('post','php/post.php');
+
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState === 4){
+                if(ajax.status >= 200 && ajax.status <= 207){
+                    // let data = JSON.parse(ajax.responseText);
+                    console.log(ajax.responseText);
+                }
+            }
+        }
+        ajax.setRequestHeader(
+            'Content-Type',
+            'application/x-www-form-urlencoded'
+        );
+        ajax.send('user='+$('#user').val());
+
+    });
+</script>
+
+</body>
+</html>

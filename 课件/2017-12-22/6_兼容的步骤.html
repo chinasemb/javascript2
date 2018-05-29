@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+
+    <input type="text" id="t">
+    <input type="button" value="点击注册" id="btn">
+    
+       
+<script>
+   
+   var btn = document.getElementById('btn');
+   var t = document.getElementById('t');
+
+    btn.onclick = function(){
+        var ajax = new XMLHttpRequest;
+        ajax.open('get','php/get.php?user='+t.value,true);
+        //1-4
+        ajax.onreadystatechange = function(){
+            // alert(ajax.readyState);
+            if(ajax.readyState == 4){//步骤
+                // console.log(ajax.responseText);
+                // console.log(ajax.status); //状态码
+                if(ajax.status >=200 && ajax.status <=207){
+                    alert('成功');
+                    console.log(ajax.statusText);
+                    // console.log(ajax.getAllResponseHeaders())
+                }else{
+                    alert('失败');
+                }
+            }
+        }
+
+        ajax.send();
+        /*
+            0-4之间的数字
+
+                4代表接收数据完毕
+
+                0是监听不到的。
+        */
+       
+        
+        // //在IE9以下浏览器就不兼容。
+        // ajax.onload = function(){
+        //     console.log(ajax.responseText);
+        // }
+    }
+
+</script>
+</body>
+</html>

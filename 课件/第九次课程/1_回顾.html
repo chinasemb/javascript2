@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="t">
+<script src="myjsonp_1.0.js"></script>
+<script>
+    /*
+        同源策略：
+            跨域：不同源
+        源：端口、协议、域名
+
+        1.高版本浏览器XMLHttpRequest + 后端设置请求头
+
+        2.服务器代理
+
+        3.jsonp
+
+        https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=s&cb=jQuery110205433632368876595_1514549491400
+    */
+
+    
+    const t = document.getElementById('t');
+    t.onkeyup = function(){
+        jsonp({
+            url:'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+            data:{
+                wd:this.value
+            },
+            success:function(data){
+                console.log(data.s);
+            },
+            cb:'cb'
+        })
+    }
+    //wd:mv   -> wd=mv&xxx=123
+    
+
+
+
+
+
+
+</script>
+</body>
+</html>

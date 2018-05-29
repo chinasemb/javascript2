@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<!-- <script>
+
+    fn([1,2,3,4]);
+</script> -->
+<script>
+    /*
+        jsonp :
+            json + padding(内填充)
+
+        格式:
+            函数名 + ( 放入数据 )
+
+        fn({name:'江上远帆',age:20})
+
+        img src=""
+
+        link
+
+        script src=""
+
+        专门解析JavaScript的
+
+        1.数据格式必须要为
+            函数名 + ( 放入数据 )
+
+        2.前端必须在**全局**绑一个函数
+
+        3.在需要这些数据的情况下，创建一个script标签
+        把这个标签放到head中，这个时候就等同于在全局调用了
+        这个函数（异步的）
+
+
+        https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=sd&cb=fn
+    */
+// window.onload  =function(){
+    function fn(data){
+        console.log(data);
+    } 
+
+    document.onclick = function(){
+        //fn([1,2,3,4])
+
+        let oS = document.createElement('script');
+        oS.src = '1.js';
+        document.getElementsByTagName('head')[0].appendChild(oS);
+    }
+// }
+
+    // fn([1,2,3,4]);
+</script>
+<!-- <script src="1.js"></script> -->
+</body>
+</html>

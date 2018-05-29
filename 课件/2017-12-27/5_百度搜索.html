@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="t">
+    <ul id="ul"></ul>
+    <!-- <button id="btn">搜索</button> -->
+<script>
+    const t = document.getElementsByTagName('input')[0];
+    // const btn = document.getElementsByTagName('button')[0];
+    const ul = document.getElementsByTagName('ul')[0];
+    function fn(data){
+        // console.log(data);
+        let str = '';
+        data.s.forEach(e=>{
+            str += `<li>
+                <a href="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&wd=${e}" target="_blank">${e}</a>
+            </li>`;
+        });
+        ul.innerHTML = str;
+    }
+    t.onkeyup = function(){
+        let oS = document.createElement('script');
+        oS.src = `https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=${t.value}&cb=fn`;
+        document.getElementsByTagName('head')[0].appendChild(oS);
+        oS.remove();
+    }
+
+
+</script>
+</body>
+</html>

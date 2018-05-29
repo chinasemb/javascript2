@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    
+    /*
+        on('.a');
+        vue  @abc="123"
+        wx('左划',)
+
+        document.addEventL..('click',fn1);
+        document.addEventL..('click',fn2);
+
+        {
+            '上滚':[fn1,fn2],
+            '下滚':[fn3,fn4]
+        }
+        
+        fn1()
+        fn2();
+
+
+        1.绑定
+            o.on('上滚',function(){})
+        2.触发
+        3.删除
+
+
+    */
+    
+
+    class Custom{
+        constructor(){
+            this._events = {}; //存所有的事件名和函数
+        }
+        on(type,fn){
+            this._events[type] = this._events[type] || [];
+            this._events[type].push(fn);
+        }
+        tirgger(type){
+            if( !this._events[type] )return;
+            this._events[type].forEach(e=>{
+                e();
+            })
+        }
+    }
+
+    let o = new Custom();
+
+    o.on('上滚',function(){
+        alert('我上滚了');
+    });
+    
+    o.on('上滚',function(){
+        alert('我上滚了2');
+    });
+
+
+    document.onmousewheel = function(ev){
+        if(ev.wheelDelta > 0){
+            o.tirgger('上滚');
+        }
+    }
+
+</script>
+</body>
+</html>

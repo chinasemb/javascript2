@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+            <button @click="onOff=true">点击就登录</button>
+            <div v-if="onOff">
+                <p>你好,醉影童鞋!</p>
+            </div>
+            <div v-else>你好,请登录!</div> 
+    </div>
+<script src="vue.js"></script>
+<script>
+
+    /*
+        类似于 v-else，v-else-if 也必须紧跟在带 v-if 或者 v-else-if 的元素之后。
+    */
+    new Vue({
+        el:'#app',
+        data:{
+            onOff:false
+        }
+    });
+
+</script>
+</body>
+</html>

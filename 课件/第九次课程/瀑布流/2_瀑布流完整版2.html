@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    	body{
+    		background:skyblue;
+    	}
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      .pic{
+        width: 236px;
+        box-shadow:0 1px 3px rgba(0,0,0,.3);
+        overflow:hidden;
+        margin-top:10px;
+      }
+      img{
+        width:236px;
+        border: none;
+        display: block;
+      }
+      ul{
+        list-style: none;
+        margin: 0 auto;
+        border:1px solid #000;
+        overflow: hidden;
+        width:1050px;
+        /* position: relative; */
+      }
+      li{
+        /* position: absolute; */
+        border: 1px solid #ccc;
+        float: left;
+        margin: 8px;
+        width:236px;
+        transition:.5s;
+      }
+      #loading{
+        height: 65px;
+        width:100%;
+        text-align: center;
+        background: #fff;
+        position: fixed;
+        bottom:0;
+        display: none;
+      }
+      #loading img{
+        display: inline-block;
+        height: 65px;
+        width:65px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="ul">
+        <li>
+                <!-- <div class="pic">
+                    <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+                </div> -->
+        </li>
+        <li>
+                <!-- <div class="pic">
+                        <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+                      </div>
+                      <div class="pic">
+                            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+                          </div> -->
+        </li>
+        <li>
+                <!-- <div class="pic">
+                        <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+                      </div> -->
+        </li>
+        <li>
+                <!-- <div class="pic">
+                        <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+                      </div> -->
+        </li>
+        <!-- <li>
+          <div class="pic">
+            <img src="http:\/\/www.wookmark.com\/images\/original\/638518_wookmark.jpg">
+          </div>
+        </li> -->
+         
+    </ul>
+    <div id="loading">
+      <img src="1.gif">
+    </div>
+<script src="myjsonp_1.0.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    /*
+        1.请求数据:
+            http://www.wookmark.com/api/json/popular
+
+            page=1
+
+            callback 回调
+    */
+
+    const ul = document.getElementById('ul');
+    const lis = ul.children;
+    const len = lis.length;
+    let num = 1;
+    let iw = 236;
+
+    let i = new Image()
+    i.src = 'http://www.wookmark.com/images/thumbs/663842_wookmark.png';
+    
+    // i.onerror = function(){
+    //   alert(1);
+    // }
+    // i.onload = function(){
+    //   alert(234);
+    // }
+    
+    /*
+        拿到数据不难，难的是如何操作数据。
+    */
+    let onOff = true;
+    function render(){
+      jsonp({
+          url:'http://www.wookmark.com/api/json/popular',
+          data:{
+              page:num
+          },
+          success:function(data){
+              // console.log(data);
+              data.forEach((el,i) => {
+                  let m = min();
+                  /*
+                    onload   能后加载出来
+                    onerror  图片坏了
+                  */
+                  // let str = `
+                  //     <div class="pic">
+                  //         <img src="${el.preview}">
+                  //     </div>`;
+                  let div = document.createElement('div');
+                  div.className = 'pic';
+                  if(el.height){
+                    let iH = iw / el.width * el.height; 
+                    div.style.height = iH + 'px';
+                    div.setAttribute('src',el.preview)
+                  }
+                  let img = new Image();
+                  img.src = el.preview;
+                  
+                  lis[m].appendChild(div);
+                  img.onload = function(){
+                    div.appendChild(img);
+                  }
+                  img.onerror = function(){
+                    div.remove();
+                  }
+              });
+              onOff = true;
+          }
+      });
+    }
+    render();
+
+    window.onscroll = function(){
+        let m = lis[min()];
+        let iH = window.innerHeight;
+        if(m.getBoundingClientRect().bottom <= iH){
+            if(!onOff)return;
+            onOff = false;
+            num ++;
+            // console.log(num);
+            render();
+        }
+    }
+    
+    //最小。
+    function min(){
+        let arr = []; //存每个li被内容撑开的高度
+        for(var i=0;i<len;i++){
+            arr.push(lis[i].scrollHeight);
+        }
+        let m = Math.min(... arr);
+        return arr.findIndex(e=>e==m);
+    }
+
+
+
+
+
+
+</script>
+</body>
+</html>

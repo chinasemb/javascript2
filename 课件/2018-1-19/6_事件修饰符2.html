@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- <input type="text" @keyup.13="up" v-model="val"> -->
+        <input type="text" @keyup.ctrl.13="up" v-model="val">
+        <ul>
+            <li v-for="(val,key) in arr">{{val}}</li>
+        </ul>
+    </div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            arr:[],
+            num:0,
+            val:''
+        },
+        methods:{
+            up(){
+                this.arr.unshift(this.val);
+                this.val = '';
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

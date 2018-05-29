@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input id="box" v-model="name" type="text"/>
+        <input id="box2" v-model="name" type="text"/>
+        {{name}}
+        <input id="box3" type="text"/>
+        <div>
+            <p>{{name}}</p>
+            <input id="box4" v-model="hehe" type="text"/>
+            {{hehe}}
+        </div>
+    </div>
+<script>
+    
+    let re = /\{\{([^}]*)\}\}/g;  //{{name}}
+    class DateView {
+        constructor(data){
+            this.nodes = [];
+            this.data = data;
+        }
+        //绑定节点
+        bind(node){
+            this.nodes.push(node);
+            // console.log(this.nodes);
+        }
+        //设置
+        updata(){
+            this.nodes.forEach(node=>{
+                if(node.nodeType === 1){
+                    node.value = this.data;
+                }
+
+                if(node.nodeType === 3){
+                    //node.dd = {{name}}
+                    node.textContent = node.dd.replace(re,function($0,$1){
+                        return data[$1].data;
+                    });
+                }
+            });
+        }
+        setter(newVal){
+            if(this.data != newVal){
+                this.data = newVal;
+                this.updata();
+            }
+        }
+        getter(){
+            return this.data;
+        }
+    }
+    /*
+        初始化数据
+    */
+    let data = {
+        name:new DateView('谷子多'),
+        hehe:new DateView('aixi')
+    }
+
+    function compile(ele){
+        ele = document.querySelector(ele);
+        //文档碎片  //appendChild
+        let frament = document.createDocumentFragment();
+        let child = ele.firstChild; //第一个子节点（元素节点、文本节点）
+
+        while(child){
+            frament.appendChild(child);
+            child = ele.firstChild
+        }
+
+        function forFrament(frament){
+            Array.from(frament.childNodes).forEach(node=>{
+                //获取元素的节点
+                if(node.nodeType === 1){
+                    Array.from(node.attributes).forEach(attr=>{
+                        let {value,name} = attr; //val:name ,name:v-model
+                        if(name.includes('v-')){
+                            //找到v-标识的元素
+                            data[value].bind(node);
+                            node.addEventListener('input',function(ev){
+                                // console.log(ev.target.value);
+                                data[value].setter(ev.target.value);
+                                //console.log(data[value].getter());
+                            });
+                        }
+                    });
+                }
+                //获取文本节点
+                if(node.nodeType === 3){
+                    let txt = node.textContent;
+                    if(re.test(txt)){
+                        // console.log(node);
+                        txt.replace(re,function($0,$1){
+                            // console.log($0,$1)
+                            data[$1].bind(node);
+                            node.dd = txt;
+                        });
+                    }
+                }
+                //递归
+                if(node.childNodes.length){
+                    forFrament(node);
+                }
+            });
+        }
+
+        forFrament(frament);
+        //触发器
+        Object.keys(data).forEach(e=>{
+            data[e].updata();
+        });
+
+        //显示到页面
+        ele.appendChild(frament);
+
+    }
+
+    compile('#app');  //el:'#app'
+
+
+
+    /*
+        fn({}) -> 不能回退 -> hash,history
+    */
+
+
+</script>
+</body>
+</html>

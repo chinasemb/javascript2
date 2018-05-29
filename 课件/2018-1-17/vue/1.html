@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.red{
+    color: red;
+}
+</style>
+</head>
+<body>
+    <div id="app">
+        <span :style="{fontSize:size+'px'}">{{message}}</span>
+        <span v-bind:title="message">123</span>
+        <div v-bind:class="{red:c}" :style="[styleObjectA,styleObjectB]">你好</div>
+    </div>
+<script src="vue.js"></script>
+<script>
+    // let str = 'hello Vue'
+
+    /*
+        v-bind:title  ->:title
+
+        :style
+        :class="{className:布尔值}"
+        :class="[obj1,obj2]"
+
+        v-once
+
+        obj1 = {
+            fontSize:'30px'
+        }
+    */
+    let v = new Vue({
+        el:'#app',
+        data:{
+            message:'hello Vue',
+            size:20,
+            c:true,
+            styleObjectA:{
+                border:'1px solid #000'
+            },
+            styleObjectB:{
+                fontSize:'30px'
+            }
+        }
+    });
+
+    //console.log(v.c);
+
+    setTimeout(function(){
+        v.c = false;
+    },1000)
+</script>
+</body>
+</html>

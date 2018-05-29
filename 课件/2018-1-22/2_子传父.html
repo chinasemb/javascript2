@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            {{str}}
+            {{num}}
+        </div>
+        <hr />
+        <hezi :n="num" @abc="changeNum"></hezi>
+    </div>
+<script src="vue.js"></script>
+<script>
+
+    /*
+        把父级的数据变成自己的数据，子附件操作就不会报错了
+
+        父级的数据流向了子级，默认情况下子级是不能改变父级的数据，父级的数据要让父级改
+
+        $emit(事件名,参数) //之前说的自定义事件
+
+
+    */
+    Vue.component('hezi',{
+        props:['n'],
+        data(){
+            return {
+                nn:this.n
+            }
+        },
+        template:`
+            <div>
+                <button @click="fn">按钮</button>
+                <p>{{nn}}</p>    
+            </div>
+        `,
+        methods:{
+            fn(){
+                ++ this.nn;
+
+                this.$emit('abc',this.nn,123);
+            }
+        }
+    });
+
+    let v = new Vue({
+        el:'#app',
+        data:{
+           str:'病毒真厉害',
+           num:10
+        },
+        methods:{
+            changeNum(newVal,n){
+                this.num = newVal;
+            }
+        }
+    });
+
+
+
+</script>
+</body>
+</html>

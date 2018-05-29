@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+    用户名:<input id="user" /><br />
+    密  码:<input id="pass" type="password"/>
+    <button id="btn">注册</button>
+    <button id="btn2">登录</button>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+    // $('#btn').click(function(){
+    //     $.ajax({
+    //         url:'http://localhost:88/user',
+    //         data:{
+    //             act:'add',
+    //             username:$('#user').val(),
+    //             password:$('#pass').val()
+    //         },
+    //         dataType:'json',
+    //         success:function(data){
+    //             if(data.code === 0){
+    //                 $('#user').css('color','green');
+    //             }else if(data.code === 1){
+    //                 $('#user').css('color','red');
+    //                 alert(data.msg);
+    //             }
+    //         }
+    //     });
+    // });
+
+    $('#btn2').click(function(){
+        $.ajax({
+            url:'http://localhost:88/user',
+            data:{
+                act:'login',
+                username:$('#user').val(),
+                password:$('#pass').val()
+            },
+            dataType:'json',
+            success:function(data){
+                console.log(data)
+            }
+        });
+    });
+
+    $('#btn').click(function(){
+        $.ajax({
+            url:'http://localhost:88/user2',
+            data:{
+                act:'add',
+                username:$('#user').val(),
+                password:$('#pass').val()
+            },
+            method:'post',
+            dataType:'json',
+            success:function(data){
+                console.log(data);
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

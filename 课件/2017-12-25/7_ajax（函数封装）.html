@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    用户名:<input type="text" id="user">
+    <button id="btn">提交</button>
+<script src="ajax.js"></script>
+
+<script>
+    /*
+        ajax({
+            url：地址，
+            data：数据
+            dataType:'xml',
+            method：‘get’
+            success:fn,
+            error:function(){}
+        })
+
+    */
+    
+    const btn = document.getElementById('btn');
+    const user = document.getElementById('user');
+
+    /*
+        {
+            user:momo,
+            pass:123
+        }
+
+        user=momo&pass=123
+    */
+
+    btn.onclick = function(){
+        ajax({
+            url:'php/post.php',
+            data:{
+                user:encodeURI(user.value)
+            },
+            method:'post',
+            dataType:'str',
+            success:function(data){
+                console.log(data);
+            }
+        });
+    }
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*
+        
+        在工作中，如果出现
+            Access-Control-Allow-Origin就说明你跨域了
+            让后端同学在请求的文件中添加一个请求头。
+            setHeader('Access-Control-Allow-Origin:*')
+        jsonp:
+            json + padding
+            
+            JSONP只支持GET请求，CORS支持所有类型的HTTP请求。JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。
+
+        CROS
+            "跨域资源共享"（Cross-origin resource sharing）
+
+            高版本浏览器下的 XMLHttpRequest + 服务器端设置请求权限:
+                除了IE6不支持,别的IE都支持，但是,每个版本支持的
+                技术是不一样的
+
+            https://3g.163.com/touch/jsonp/sy/recommend/0-10.html
+
+            CORS与JSONP的使用目的相同，但是比JSONP更强大。
+
+        服务器代理
+            通过服务器文件去访问第三方的数据，
+            这个文件又和前端是同域的情况下
+            这个时候通过前端去访问这个服务器文件
+            达到跨域的目的。
+
+
+    */
+
+    document.onclick = function(){
+        const ajax = new XMLHttpRequest;
+        ajax.open('get','php/3.get.php');
+
+        ajax.onload = function(){
+            console.log(123);
+            console.log(ajax.responseText)
+        };
+
+        ajax.send();
+
+    }
+
+</script>
+</body>
+</html>

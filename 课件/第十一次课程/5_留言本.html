@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" />
+    <input type="button" value="添加"/>
+    <ul></ul>
+
+    <div id="box">
+        <span>span</span>
+    </div>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        append / appendTo  后添加
+        prepend / prependTo 前添加
+
+        $("p").empty(); //清除p标签的所有子节点
+
+        $('p').html(''); -> p.innerHTML = '';
+
+        remove()
+
+        replaceWith 替换
+
+        clone(true)  -> 克隆事件
+
+        ***jQuery中的事件都是事件绑定
+
+        解绑:
+            off();
+
+    */
+    $(':button').click(function(){
+        let $v = $(':text').val();
+        // $('ul').append('<li>'+ $v +'</li>');
+        // $('<li>'+ $v +'</li>').appendTo('ul').css('color','red');
+        $('ul').prepend('<li>'+ $v +'</li>');
+        $(':text').val('');
+    });
+
+
+    // $('#box').click(function(){
+    //     alert(1);
+    // });
+
+    // $(document).click(function(){
+    //     $('body').append($('#box').clone(true));
+    // });
+</script>
+</body>
+</html>

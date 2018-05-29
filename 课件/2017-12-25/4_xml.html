@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="小按钮">
+    <ul id="ul">
+
+    </ul>
+<script>
+    const btn = document.getElementById('btn');
+    const ul = document.getElementById('ul');
+    btn.onclick = function(){
+        const ajax = new XMLHttpRequest;
+
+        ajax.open('get','php/data.xml',true);
+
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState === 4){
+                if(ajax.status >= 200 && ajax.status <= 207){ 
+                    const data = ajax.responseXML;
+                    const content = data.getElementsByTagName('content')[0];
+                    const childrens = content.children; 
+                    console.log(childrens);
+
+                    var html = '';
+                    for(var i=0;i<childrens.length;i++){
+                        let name = childrens[i].children[0];
+                        let age = childrens[i].children[1];
+                        let sex = childrens[i].children[2];
+                        let info = childrens[i].children[3];
+
+                        html += '<li>我的名字叫:'+ name.innerHTML +',年龄:'+age.innerHTML+',性别:'+sex.innerHTML+'我想说：“'+info.innerHTML+'</li>';
+
+                    }
+                    ul.innerHTML = html;
+                }
+            }
+        }
+
+        ajax.send();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <form action="php/get_json.php">
+        用户名:<input type="text" name="user" id="t">
+        密码:<input type="password" name="password">
+        <input type="submit" value="提交"/>  
+    </form> -->
+
+    <input type="text" id="t">
+    <input type="button" value="点击注册" id="btn">
+    
+       
+<script>
+    /*
+        
+        
+        get:
+            通过url方式进行请求
+                相对来说是不安全的
+                体积是有限制的（根据不同浏览器大小进行限制）
+
+
+        post:
+            服务器的方式进行请求
+                想对来说是安全的
+                理论说不限(后端人员会去限制大小)
+            
+            设置头信息:
+            ajax.setRequestHeader('Content-Type',
+			'application/x-www-form-urlencoded');
+        
+    */
+
+    let btn = document.getElementById('btn');
+    let t = document.getElementById('t');
+
+    btn.onclick = function(){
+        const ajax = new XMLHttpRequest;
+        ajax.open('get','php/post.php',true);
+
+        ajax.setRequestHeader('Content-Type',
+			'application/x-www-form-urlencoded');
+
+        ajax.send('user='+t.value);
+        ajax.onload = function(){
+            console.log(ajax.responseText);
+        }
+    }
+
+</script>
+</body>
+</html>

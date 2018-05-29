@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button 
+            v-for="(val,key) in navs"
+            @click="fn(key)"
+            >
+            {{val}}
+        </button>
+        <div :is="comm"></div>
+    </div>
+<script src="vue.js"></script>
+<script>
+   
+    let aa = {
+        template:`
+            <div>
+                11111    
+            </div> `
+    }
+    let bb = {
+        template:`
+            <div>
+                22222    
+            </div> `
+    }
+    let cc = {
+        template:`
+            <div>
+                3333    
+            </div> `
+    }
+
+    let v = new Vue({
+        el:'#app',
+        data:{
+          comm:'aa',
+          navs:['一','二','三']
+        },
+        methods:{
+            fn(key){
+                switch(key){
+                    case 0:
+                        this.comm = 'aa';
+                    break;  
+                    case 1:
+                        this.comm = 'bb';
+                    break;  
+                    case 2:
+                        this.comm = 'cc';
+                    break;  
+                }
+            }
+        },
+        components:{
+            aa,
+            bb,
+            cc
+        }
+    });
+
+
+
+</script>
+</body>
+</html>

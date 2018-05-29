@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        <input type="text" id="t">
+        <input type="button" value="点击注册" id="btn">
+<script>
+    /*
+        同步和异步：
+
+            同步：
+                上一段代码没有运行完毕，下一段代码就不能执行
+            
+            异步：
+                不用等待上一段代码运行完就可以运行下一段代码
+    */
+
+    var btn = document.getElementById('btn');
+    var t = document.getElementById('t');
+
+    btn.onclick = function(){
+
+        let ajax = new XMLHttpRequest;
+
+        ajax.open('get','php/get_async.php?user='+t.value);
+
+        ajax.onreadystatechange = function(){
+            if(ajax.readyState === 4){
+                if(ajax.status >= 200 && ajax.status <= 207){
+                    console.log(ajax.responseText);
+                }
+            }
+        }
+
+        ajax.send();
+
+        alert(1111);
+    }
+</script>
+</body>
+</html>

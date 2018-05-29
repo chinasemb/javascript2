@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+.active{
+    background: yellow;
+}
+#box div{
+    width:150px;
+    height: 100px;
+    border: 1px solid #000;
+    display: none;
+}
+#box div.show{
+    display: block;
+}
+
+
+    
+</style>
+</head>
+<body>
+    <div id="box">
+        <div class="show">11111</div>
+        <div>22222</div>
+        <div>33333</div>
+        <input type="button" value="按钮一" class="active">
+        <input type="button" value="按钮二">
+        <input type="button" value="按钮三">
+    </div>
+    <!-- <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul> -->
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        去掉on，直接写事件名 + (callback)
+
+            click
+            mouseover
+            mouseout...
+
+            classList.remove();
+
+            什么时候用each?
+                在一堆元素做不同的事情时就可以用each
+
+            如果一堆元素做同一件事情就可以不用each
+
+            removeClass:
+                删除class
+            addClass:
+                添加class
+
+            index(范围);
+                找到当前元素在父级的子元素中的位置
+
+            siblings(范围)：
+                兄弟节点（除了自己以外的兄弟节点，上面的兄弟节点，下面的兄弟节点）
+            eq(2) -> jQuery对象
+
+            show -> display:block
+            hide -> display:none
+            
+    */
+    // $(':button').click(function(){
+    //     $(':button').removeClass('active');
+    //     $('#box div').removeClass('show');
+    //     $(this).addClass('active');
+    //     // alert($(this).index());
+    //     $('#box div').eq($(this).index('input')).addClass('show');
+    // });
+
+    // $(':button').click(function(){
+    //     $(this).addClass('active').siblings('input').removeClass('active');
+    //     $('#box div').eq($(this).index('input')).addClass('show').siblings('div').removeClass('show');;
+    // });
+
+    $(':button').click(function(){
+        $(this).addClass('active').siblings('input').removeClass('active');
+        $('#box div').eq($(this).index('input')).show().siblings('div').hide();
+    });
+
+    // $('li').css('background','red');
+</script>
+</body>
+</html>

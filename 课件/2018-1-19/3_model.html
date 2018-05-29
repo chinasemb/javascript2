@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{str}}
+        <!-- <input type="text" :value="str" @input="fn"> -->
+        <input type="text" v-model="str">
+        <textarea v-model="str" placeholder="add multiple lines"></textarea>
+        <input type="checkbox" value="榴莲"  v-model="arr">
+        <input type="checkbox" value="90"  v-model="arr">
+        {{arr}}
+        {{checked}}
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        /*
+            v-on -> @click="fn"
+
+            v-model专门用来操作表单控件的
+
+            用户在操作表单的时候就能进行数据的更改
+
+            如果要通过操作表单获取出值，那么加上value
+        */
+        new Vue({
+            el:'#app',
+            data:{
+                str:'hehe',
+                checked:false,
+                arr:[]
+            },
+            // methods:{
+            //     fn(ev){
+            //         // console.log(this.str);
+            //         this.str = ev.target.value;
+            //         // console.log(ev.target.value);
+            //     }
+            // }
+        })
+    </script>
+</body>
+</html>

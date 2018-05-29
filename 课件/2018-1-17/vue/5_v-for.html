@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+</style>
+</head>
+<body>
+    <div id="app">
+            <!-- <button v-for="(val,key) in navObj">{{key}}</button> -->
+            <button :class="{active:index==num}" v-for="(val,index) in nav" @click="num = index">
+                {{val}}
+            </button>
+            <div v-for="(val,key) in content" v-show="key == arr[num]">{{val}}</div>
+        </div>
+<script src="vue.js"></script>
+<script>
+
+   
+    new Vue({
+        el:'#app',
+        data:{
+            arr:['n1','n2','n3'],
+            num:0,
+            nav:['社会','娱乐','科技'],
+            navObj:{
+                "n1":"社会",
+                "n2":"娱乐",
+                "n3":"科技"
+            },
+            content:{
+                "n1":"1榴莲和老司机在一起了",
+                "n2":"2榴莲和又和另一个老司机在一起了",
+                "n3":"3榴莲这个老司机，开车和老祭祀在一起了"
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

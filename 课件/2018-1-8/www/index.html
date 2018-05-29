@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="user">
+    <input type="button" value="按钮" id="btn">
+<script>
+
+    const user = document.getElementById('user');
+
+    const btn = document.getElementById('btn');
+
+    btn.onclick = function(){
+        let ajax = new XMLHttpRequest;
+
+        ajax.open('get','/user?name='+user.value,true);
+
+        ajax.send();
+
+        ajax.onload = function(){
+            let obj = JSON.parse(ajax.responseText);
+            if(obj.code == 0){
+                user.style.color = 'red';
+            }else if(obj.code == 1){
+                user.style.color = 'green';
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

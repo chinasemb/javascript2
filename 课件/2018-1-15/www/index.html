@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{t}}</title>
+</head>
+<body>
+    {%if !u%}
+        <div id="box">
+                用户名:
+                <input type="text" id="u"/>
+                <input type="button" value="提交" id="btn">
+        </div>
+    {%else%}
+        <p id="p">欢迎{{u}}来到node的世界</p>
+        <button id="out">退出</button>
+    {%endif%}
+<script src="www/jquery-3.2.1.min.js"></script>
+<script>
+
+    // let u = localStorage.getItem('user') || '';
+    // if(u){
+    //     $('#box').hide();
+    //     $('#p').html('欢迎'+u+'来到node的世界');
+    // }else{
+    //     $('#box').show();
+    // }
+    $('#out').click(function(){
+        $.ajax({
+            url:'/user/out',
+            method:'post',
+            success:function(){
+                location.reload();
+            }
+        })
+    });
+    $('#btn').click(function(){
+        $.ajax({
+            url:'/user/add',
+            data:{
+                username:$('#u').val()
+            },
+            method:'post',
+            success:function(data){
+                if(data.code===0){
+                    location.reload();
+                    //localStorage.setItem('user',data.user);
+                }
+            }
+        })
+    });
+</script>
+</body>
+</html>

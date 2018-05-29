@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1515164393458&di=9936d84415d5a2fa6c7a50f3c00f569e&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fimage%2Fpic%2Fitem%2Fcc11728b4710b9128942bd3ecafdfc039345226a.jpg" alt="" id="img">
+<script src="jquery-3.2.1.min.js"></script>
+
+<script>
+    /*
+        1.无new化操作
+            不在外面new，在里面new
+            找一个替身，这个替身拥有jQuery的所有的属性和方法
+        2.链式操作
+            return this
+        3.
+            (function(a,b){
+                b(a);
+            })(window,function(a,c){
+                代码写在这里
+
+                a.$ = a.jquery = jquery;
+            });
+
+        $(function(){
+             //当DOM加载完成的时候执行代码
+        });
+
+        css()
+
+            一般一个参数为字符串的时候就是获取
+                'width'
+            二个参数为设置
+                'width','200px'
+            一个参数为对象就是批量设置
+                {
+                    width:200,
+                    height:200
+                }
+
+
+    */
+
+    // window.onload = function(){
+    //     alert(1);
+    // }
+
+    // $(function(){
+    //     alert(1);
+    // });
+
+    // $(document).ready(function(){
+    //     alert(1);
+    // });
+
+
+    // console.log($('#img').css('width'));
+
+    // $('#img').css('width','200px');
+
+    // $('#img').css({
+    //     width:200,
+    //     height:200
+    // });
+
+    
+
+</script>
+</body>
+</html>

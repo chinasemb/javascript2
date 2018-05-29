@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+       <input type="checkbox" v-for="(val,key) in arr" v-model="val.checked">
+        {{arr}}
+    </div>
+<script src="vue.js"></script>
+<script>
+    let v = new Vue({
+            el:'#app',
+            data:{
+               arr:JSON.parse(localStorage.getItem('arr')) || [
+                   {checked:false},
+                   {checked:false},
+                   {checked:false},
+                ]
+            },
+            watch:{
+                // str(val,oldV){
+                //     console.log(this.arr);
+                // //    localStorage.set('arr',);
+                // }
+                arr:{
+                    handler:function(val,oldVal){
+                        localStorage.setItem('arr',JSON.stringify(this.arr));
+                    },
+                    deep: true
+                }
+
+            }
+        });
+    
+
+</script>
+</body>
+</html>

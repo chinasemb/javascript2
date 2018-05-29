@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button @click="add">按钮</button>
+        {{arr}}
+        <add-li :a="arr"></add-li>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+
+        /*
+            父子组件数据传递是单向数据流
+            v-bind 可以把父组件的数据传递给子组件
+        */
+
+        Vue.component('add-li',{
+            props:['a'],
+            template:`
+                <ul>
+                    <li v-for="(val,key) in a">{{val}}</li>
+                </ul>`
+        });
+
+        new Vue({
+            el:'#app',
+            data:{
+                arr:[1,2,3,4,5]
+            },
+            methods:{
+                add(){
+                    this.arr.push(Math.random());
+                }
+            }
+        });
+    </script>
+</body>
+</html>

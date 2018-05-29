@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="反选">
+    <input type="checkbox" checked>
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        checked == true
+
+        attr()
+            getAttribute()
+            setAttribute()
+
+        $().each(function(i,e){
+
+        })
+
+    表单选中都要使用    
+        prop  -> 返回一个布尔值。
+    */
+
+
+    // $(':checkbox').eq(0).attr('index',1);
+
+    // $(':checkbox').eq(0).attr('checked',true);
+
+    // console.log($(':checkbox').eq(0).attr('index'));
+
+    let $inputs = $(':checkbox');
+    $(':button').click(function(){
+        $inputs.each(function(i,el){
+            // console.log( $(el).prop('checked') );
+            if($(el).prop('checked')){
+                $(el).prop('checked',false);
+            }else{
+                $(el).prop('checked',true);
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

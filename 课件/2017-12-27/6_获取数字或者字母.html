@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    function fn(data){
+        console.log(data);
+    }
+    /*
+        1.js
+        alert(1)
+
+        fn([1,2,3])
+    */
+    document.onclick = function(){  
+        let oS = document.createElement('script');
+        oS.src = 'http://localhost/2017-12-27/php/2.php?cb=fn&num=number';
+        document.getElementsByTagName('head')[0].appendChild(oS);
+        oS.remove();
+    }
+
+</script>
+</body>
+</html>

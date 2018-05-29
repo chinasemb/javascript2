@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.red{
+    color: red;
+}
+#box{
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+</style>
+</head>
+<body>
+    <div id="app">
+        <!-- <button v-on:click="onOff = !onOff">点击打开</button> -->
+        <button @click="onOff = !onOff">点击打开</button>
+        <div id="box" v-show="onOff"></div>
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        v-on:click  === @click
+        v-on:mouseover
+        ....
+        v-on -> @
+
+        v-show  显示隐藏
+
+    */
+    new Vue({
+        el:'#app',
+        data:{
+            onOff:false
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+.active{
+    background: yellow;
+}
+</style>
+</head>
+<body>
+    <div id="app">
+            <button @click="onOff='A'" :class="{active:(onOff === 'A')}">A</button>
+            <button @click="onOff='B'" :class="{active:(onOff === 'B')}">B</button>
+            <button @click="onOff='C'" :class="{active:(onOff === 'C')}">C</button>
+            <div v-if="onOff === 'A'">
+               A
+            </div>
+            <div v-else-if="onOff === 'B'">
+                B
+            </div>
+            <div v-else>
+                C
+            </div>
+            
+    </div>
+<script src="vue.js"></script>
+<script>
+
+    /*
+        类似于 v-else，v-else-if 也必须紧跟在带 v-if 或者 v-else-if 的元素之后。
+    */
+    new Vue({
+        el:'#app',
+        data:{
+            onOff:'A'
+        }
+    });
+
+</script>
+</body>
+</html>

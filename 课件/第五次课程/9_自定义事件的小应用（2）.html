@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style>
+#box{
+    width:100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    top:0;
+    left:0;
+}
+</style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+
+    document.addEventListener("点击",function(){
+        alert(1);
+    });
+
+    let c = new CustomEvent('点击',{}); //订阅
+   
+    document.onclick = function(){
+        document.dispatchEvent(c); //发布
+    }
+
+
+
+</script>
+</body>
+</html>

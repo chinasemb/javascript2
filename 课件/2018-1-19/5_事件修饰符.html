@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div @click.once="fn">
+            div1
+            <div @click.stop="fn2">
+                div2
+            </div>
+        </div>
+        <img src="3.gif" @mousedown.prevent="fn3">
+    </div>
+<script src="vue.js"></script>
+<script>
+    /*
+        如果事件函数名没有加括号，那么在函数中的第一个参数自然就是event对象
+        如果加了括号，那么没有传值就为undefined，如果想要获取到
+        event对象，那么传入一个$event;
+    */
+    new Vue({
+        el:'#app',
+        data:{
+            arr:[1],
+            num:0,
+        },
+        methods:{
+           fn(ev){
+                console.log(ev.target.innerHTML);
+           },
+           fn2(ev){
+              console.log(ev.target.innerHTML);
+            //   ev.cancelBubble = true;
+           },
+           fn3(ev){
+            //    ev.preventDefault();
+           }
+        }
+    })
+
+</script>
+</body>
+</html>

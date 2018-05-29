@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+/*
+    简单类型的赋值为赋值
+    复合类型的赋值为赋址
+
+    数组可以使用for循环去拷贝数据类另一个对象
+    对象可以使用for in循环去拷贝数据类另一个对象
+
+    Object.assign：
+        对象的拷贝
+	 Object.assign(target, source1,source2，source3...)
+	合并多个对象
+	用于对象的合并，将源对象（source）的所有可枚举属性，
+	复制到目标对象（target）
+
+*/
+    //let arr = [1,2,3,4];
+
+    //let arr2 = arr;
+
+    // let arr2 = [];
+
+    // for(let i=0;i<arr.length;i++){
+    //     arr2[i] = arr[i];
+    // }
+
+    // arr2.push(5);
+
+    // console.log(arr);
+
+
+    let obj = {
+        name:"90-ING",
+        age:18
+    }
+
+    // let obj2 = obj;
+
+    let obj2 = {};
+
+    // for(var attr in obj){
+    //     obj2[attr] = obj[attr]
+    // }
+
+    Object.assign(obj2,obj);
+
+    obj2.name = '番茄';
+
+    console.log(obj2);
+
+</script>
+</body>
+</html>

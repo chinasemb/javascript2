@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- {%if data=='呵呵'%}
+        <title>hehe</title>
+    { % else % }
+        <title>123</title>
+    {%endif%} -->
+</head>
+<body>
+    用户名:<input id="u" /><br />
+    密 码:<input type="password" id="p" />
+    <input id="btn" type="button" value="注册"/>
+    <p id="pp"></p>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+
+    let u = localStorage.getItem('user');
+    if(u){
+        $('#u,#p').hide();
+        $('#pp').html(u+':欢迎光临!');
+    }
+
+    $('#btn').click(function(){
+        $.ajax({
+            url:'user/add',
+            method:'post',
+            data:{
+                username:$('#u').val(),
+                password:$('#p').val()
+            },
+            success:function(data){
+                if(data.code === 0){
+                    localStorage.setItem('user',data.name);
+                    location.reload();
+                } 
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+        用户名:<input type="text" id="t">
+        <input type="button" value="点击注册" id="btn">
+<script>
+    /*
+        ajax的交互模型:
+            1.XMLHttpRequest    创建ajax对象
+            2.open              填写地址
+                1.请求的方式（get,post）
+                2.url
+                3.是否异步
+            3.send()            发送请求
+            4.onload            等待
+            5.ajax.responseText 收到请求
+
+        http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html
+
+        *** 后端返回的数据都是字符串。
+
+        ajax
+            Asynchronous Javascript And XML
+            <pseron>
+                <name>独行</name>
+                <age>18</age>
+            </pseron>
+
+        现在基本都是JSON格式数据。
+            '{}'  ->  {}
+            '[]'  ->  []
+
+        JSON.parse();  可以把json格式的数据转成对象或者数组
+            注意：
+                JSON数据一定要是一个标准格式的
+                    '{"key":"value"}'
+                    "{key:'value'}"
+
+        JSON.stringify(); 可以把对象格式的数据转成JSON格式的
+            {"key":"value"}
+
+        json2.js 就可以兼容低版本浏览器了。
+            
+        
+    */
+
+    let str = '{"key":"value","fn":"function(){}"}';
+    let obj = {key:"value",fn:function(){},u:undefined,k:'hehe'};
+
+    // console.log(JSON.parse(str));
+    console.log(JSON.stringify(obj));
+
+    let btn = document.getElementById('btn');
+    let t = document.getElementById('t');
+
+    btn.onclick = function(){
+        const ajax = new XMLHttpRequest;
+        ajax.open('get','php/get_json.php?user='+t.value,true);
+        ajax.send();
+        ajax.onload = function(){
+            //ajax.responseText 后端返回的数据
+            //'{"code": 0, "msg": "用户名可以注册！"}'
+            // console.log(ajax.responseText);
+            let data = JSON.parse(ajax.responseText);
+
+            if(data.code === 0){
+                t.style.color = 'green';
+            }else if(data.code === 1){
+                t.style.color = 'red';
+            }
+
+            //console.log(data.msg);
+
+        }
+    }
+
+</script>
+</body>
+</html>
