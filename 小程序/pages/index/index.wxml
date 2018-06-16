@@ -4,6 +4,31 @@
         <navigator class = 'userInfo'>
             <image src = '/common/img/login.png'></image>
         </navigator>
-        
+    </view>
+    <view class = 'nav-list'>
+        <navigator>
+            <image src = '/common/img/food.png'></image>
+            <text>美食</text>
+        </navigator>
+        <navigator>
+            <image src = '/common/img/ktv.png'></image>
+            <text>KTV</text>
+        </navigator>  
+            
+        <navigator>
+            <image src = '/common/img/pedicure.png'></image>
+            <text>足疗/按摩</text>
+        </navigator> 
+        <navigator>
+            <image src = '/common/img/hotel.png'></image>
+            <text>酒店</text>
+        </navigator> 
+        <navigator>
+            <image src = '/common/img/hair.png'></image>
+            <text>丽人/美发</text>
+        </navigator>
+            
+            
+            
     </view>
 </scroll-view>
