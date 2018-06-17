@@ -1,3 +1,4 @@
+<import src= '/common/template/list.wxml'/>
 <scroll-view class = 'scroll-page'>
     <view class = 'header'>
         <navigator class = 'city'>北京</navigator>
@@ -26,9 +27,13 @@
         <navigator>
             <image src = '/common/img/hair.png'></image>
             <text>丽人/美发</text>
-        </navigator>
-            
-            
-            
+        </navigator>     
     </view>
+    <view class = 'hot'>
+        <view class = 'hot-title'>
+            猜你喜欢
+        </view>
+        <template is = 'list'/>
+    </view>
+    <view class = 'load-more'>正在加载更多内容........</view>
 </scroll-view>

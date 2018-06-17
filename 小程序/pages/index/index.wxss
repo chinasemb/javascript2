@@ -1,3 +1,4 @@
+@import "../../common/css/list.wxss";
 page{
   height: 100%
 }
@@ -49,7 +50,7 @@ page{
 }
 .nav-list navigator{
   margin:auto ;
-  flex :1 ;
+   flex :1 ; 
   text-align:center;
 }
 .nav-list image{
@@ -60,4 +61,13 @@ page{
   display:block ; 
   line-height: 51rpx;
   font-size: 26rpx ;
+}
+.hot {
+  background:#fff;
+  margin-top:20rpx;
+}
+.hot-title {
+  font : 30rpx/80rpx '宋体';
+  padding-left :30rpx ;
+  color:#777;
 }
