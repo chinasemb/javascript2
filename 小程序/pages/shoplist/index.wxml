@@ -1,0 +1,9 @@
+
+<scroll-view class = 'page' scroll-y>
+    <view class = 'list-nav'>
+        <text></text>
+    </view>
+</scroll-view>
+<text>SKT </text>
+<text>EDG </text>
+<text>KT </text>

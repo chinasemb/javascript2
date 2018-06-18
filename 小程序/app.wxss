@@ -12,3 +12,6 @@ page{
 .clear {
   display:block ;
 }
+.navigator-hover{     /*点击出现的恶心的阴影*/
+  background:transparent;
+}

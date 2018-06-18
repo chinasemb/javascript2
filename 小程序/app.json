@@ -1,11 +1,13 @@
 {
-  "pages":[
-    "pages/index/index"
+  "pages": [
+    "pages/index/index",
+    "pages/index",
+    "pages/shoplist/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#181818",
     "navigationBarTitleText": "一朵云点评",
-    "navigationBarTextStyle":"#fff"
+    "navigationBarTextStyle": "#fff"
   }
 }

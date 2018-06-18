@@ -1,0 +1,10 @@
+/* pages/shoplist/index.wxss */
+text{
+  color:blue;
+  display:block;
+  background:#fff;
+  padding-left:20rpx ;
+  padding-top:20rpx ;
+  padding-bottom:20rpx ;
+}
+@import '../../common/css/font';
