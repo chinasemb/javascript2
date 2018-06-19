@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    用户名:<input type="text" id="t">
+    <input type="button" value="点击注册" id="btn">
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+    /*
+        ajax:
+            AJAX即“Asynchronous Javascript And XML”
+            （异步JavaScript和XML），
+            是指一种创建交互式网页应用的网页开发技术。
+
+        arr = [1,2,3,4];
+
+        集成环境:
+            XAMPP
+
+        $.ajax()
+	
+        $.ajax({
+            url: 请求地址
+            method:请求方式
+            data：发送的数据
+            success：成功触发的函数
+            error：错误执行的函数
+            dataType：接收的数据的类型
+        });
+
+
+    */
+
+    $('#btn').click(function(){
+        $.ajax({
+            method:'get',
+            url:'php/get.php',
+            data:{
+                user:$('#t').val()
+            },
+            success:function(data){
+                console.log(data);
+            }
+        });
+    });
+    
+</script>
+</body>
+</html>

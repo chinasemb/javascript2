@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Person {
+            constructor(name,age){
+                this.name= name ;
+                this.age = age ;
+            }
+            say(){
+                alert(this.name)
+            }
+        }
+
+        class Police extends Person {
+            constructor(name,age,job){
+                super(name,age)
+            }
+            gongfu(){
+                alert(this.name+'会真气功')
+            }
+        }
+
+        let p1 = new Person('昂',18) ;
+        let p2 = new Police('榴莲',20) ;
+        //p1.say();
+
+        p2.gongfu();
+        console.log(p1);
+
+        //Police 继承了 Person 的 constructor 中的this.name .
+
+        let obj = {
+            "name" : "90-ING",
+            "age" : 12,
+            "arr" :[1,2,3,4]
+        } 
+
+        let obj2 = JSON.parse(JSON.stringify(obj));
+
+        
+
+        obj2.arr.push(5);
+
+        console.log(obj2);
+
+        console.log(obj);
+
+        //stringify 转不了 undefined function  深拷贝 浅拷贝 
+    </script>
+</body>
+</html>

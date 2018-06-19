@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    用户名: <input type='text' id='text1'>
+    <input type='button' id='btn' value="点击注册">
+    <script>
+        /* 
+            后端返回的数据基本是 JSON  数据   以前是字符串 数据
+            XML   
+                    <person>
+                        <name>s <name/>
+                        <age> 12 <age/>
+                     <person/>
+            JSON 
+                    '{}'  =>   {} 
+                    '[]'  =>   []
+
+                    JSON.parse(ajax.responseText).msg  把 字符串格式 的数据转换成 对象的形式
+                                                        注意
+                                                       JSON 数据一定要是一个 标准格式 的
+                                                       key 值   value 值  要用 双引号  bao
+                    JSON.stringify()                   把 对象格式 的数据转换成   字符串的 数据格式
+
+                    这 2个 在低版本浏览器 用不了  
+                    下载一个json2.js 就可以兼容 低版本浏览器 了
+            
+            let obj2 = JSON.parse(JSON.stringify(obj)); 深度拷贝   先把对象转成字符串,再把字符串转换成对象,进行深度拷贝 .
+
+            数据中 如果有function  undefined 是转不成 对象的形式 的
+
+
+            get 
+                    1. 通过url 的方式进行请求 
+                            通过get 方式请求 把帐号密码放在url 中进行请求数据的发送验证(以前用form表单,地址栏暴露了用户信息用户名,密码)相对不安全
+                    2. url体积是有限制的  浏览器地址栏的长度受到限制(根据不同浏览器大小进行限制)sss
+                            
+            post
+                    1. 通过服务器的方式 进行请求 ,相对安全.
+                    2. 理论说不限 (后端人员会限制大小)
+                            
+
+
+
+        */
+    let btn = document.querySelector("#btn") ;
+    let text = document.querySelector("#text1");
+
+    btn.onclick = function () {
+        const ajax = new XMLHttpRequest() ;
+        ajax.open('get','php/get_json.php?user='+text.value);
+        ajax.send();
+        ajax.onload = function () {
+            let data = JSON.parse(ajax.responseText) ;
+            if (data.code===0) {
+                text.style.color = 'green';
+                text.style.fontSize = '48px';
+            }else if(data.code === 1)
+            {
+                text.style.color = 'pink';
+            }
+
+        }
+    }
+    </script>
+</body>
+</html>
