@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+        用户名:<input type='text' id='text1'>
+        <input type='button' value='点击注册' id='btn'>
+        
+    <script>
+        let text = document.querySelector('#text1');
+        let btn = document.querySelector('#btn');
+
+        btn.onclick = function () {
+            const ajax = new XMLHttpRequest ;
+            ajax.open('post','php/post.php',true);
+            ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");//设置请求头,知道发送的文件的数据格式
+            ajax.send('user='+text.value);
+            ajax.onload = function () {
+                console.log(ajax.responseText);
+            }
+
+        }
+    </script>
+</body>
+</html>
