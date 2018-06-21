@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    用户名: <input type='text' id='text1'>
+    <input type='button' id='btn' value='点击注册'>
+    <script src = 'jquery-3.2.1.min.js'></script>
+    <script>
+        $('#btn').click(function () {
+            $.ajax({
+                method:'get',
+                url:'php/get_json.php',
+                data:{
+                    user:$('#text1').val()
+                },
+                dataType:'json',
+                success:function (data) {
+                    // let data1 = JSON.parse(data);//字符串转成对象的形式
+                    // console.log(data1);
+                    if ( data.code === 1  ) {
+                        $("#text1").css("color","green");
+                    } else if(
+                        data.code ===0
+                    ) {
+                        $("#text1").css("color", "pink");
+                    }
+                }
+            })
+        })
+    
+    </script>
+</body>
+</html>

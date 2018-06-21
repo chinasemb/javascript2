@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    用户名: <input type = 'text' id = 'text1'>
+    <input type = 'button' id = 'btn' value = '点击注册'>
+    <script src = 'jquery-3.2.1.min.js'></script>
+    <script>
+        $("#btn").click(function () {
+            
+            const ajax = new XMLHttpRequest ;
+
+            ajax.open("get",'php/get_json.php?user='+$('#text1').val()) ; //php/get_json.php  url路径需要加强注意.
+
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState === 4 ) {
+                    if (ajax.status >=200 && ajax.status <= 207) {
+                        let data1 = JSON.parse(ajax.responseText);
+                        console.log(data1.msg)
+                    }
+                }
+            } ;
+
+            ajax.send();
+
+         })
+    </script>
+</body>
+</html>
