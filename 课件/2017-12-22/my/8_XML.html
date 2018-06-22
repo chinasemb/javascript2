@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id = 'btn' value = '小按钮'>
+    <ul id = 'ul1'></ul>
+    <script>
+        const btn = document.querySelector("#btn");
+        const ul = document.querySelector("#ul1");
+        btn.onclick = function () {
+            const ajax = new XMLHttpRequest;
+
+            ajax.open("get", 'php/data.xml' ); //php/get_json.php  url路径需要加强注意. 前端处理一下
+            //把中文转成 URI 编码 ,现在只有get 方式 会有URI编码的问题
+            //post 方式 设置了请求头的时候已经把编码转了
+
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState === 4) {
+                    if (ajax.status >= 200 && ajax.status <= 207) {
+                        const data = ajax.responseXML ;
+                        const content = data.getElementsByTagName('content')[0];
+                        const childrens = content.children;
+
+                        console.log(ajax.responseXML)//ajax.responseText   responseXML 专业的
+                        console.log(content);
+                        console.log(childrens);
+                        
+                    }
+                }
+            };
+
+            ajax.send();
+        }
+    </script>
+</body>
+</html>
