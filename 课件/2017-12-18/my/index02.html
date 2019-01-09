@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    button {
+      background: red;
+      margin: 10px;
+    }
+
+    div {
+      display: none;
+      width: 300px;
+      height: 300px;
+      border: 1px solid red;
+      padding: 10px;
+      margin: 10px;
+      background: skyblue;
+    }
+
+    .active {
+      background: skyblue;
+    }
+
+    .show {
+      display: block;
+    }
+
+    #wrap {
+      width: 400px;
+      height: 400px;
+      margin: 140px auto;
+      border: 1px solid red;
+      padding: 10px;
+      background: greenyellow;
+    }
+  </style>
+</head>
+
+<body>
+  <section id="wrap">
+    <button class="active">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <div class="show">内容一</div>
+    <div>内容二</div>
+    <div>内容三</div>
+  </section>
+
+  <script>
+    function Tab() {
+      this.btns = Array.from(document.querySelectorAll('button'));
+      this.divs = document.querySelectorAll('div');
+    }
+    Tab.prototype.init = function () {
+      this.btns.forEach(function (item, index) {
+        let _this = this;
+        // console.log(_this);
+
+        item.onclick = function () {
+          // alert(1)
+          _this.change(index)
+        }
+      }, this)
+    }
+    Tab.prototype.change = function (index) {
+
+      this.btns.forEach((item, index) => {
+        item.className = '';
+        this.divs[index].className = '';
+      }, this)
+      this.btns[index].className = 'active';
+      this.divs[index].className = 'show'
+    }
+
+    let t = new Tab;
+    t.init();
+  </script>
+</body>
+
+</html>
