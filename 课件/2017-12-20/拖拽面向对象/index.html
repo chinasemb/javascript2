@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background: pink;
+      position: absolute;
+      border-radius: 50%;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+
+  </div>
+  <script>
+    class Drag {
+      constructor(id, box, disX, disY) {
+        this.box = document.getElementById(id);
+        this.disX = 0;
+        this.disY = 0;
+      }
+
+      init() {
+        this.box.addEventListener('mousedown', (ev) => {
+          this.down(ev)
+        })
+      }
+
+      down(ev) {
+
+        let _this = this;
+
+        this.disX = ev.clientX - this.box.offsetLeft;
+        this.disY = ev.clientY - this.box.offsetTop;
+        this.box.style.background = 'skyblue';
+
+        document.addEventListener('mousemove', move);
+        document.addEventListener('mouseup', up);
+
+        function move(ev) {
+          _this.move(ev)
+        }
+
+        function up(m, p) { //cannot add params   不能传递实参,可以传递 形参,实参和形参不能名称一样 
+          _this.up(move, up)
+        }
+
+      }
+
+      move(ev) {
+        // console.log(ev);
+
+        this.box.style.left = ev.clientX - this.disX + 'px';
+        this.box.style.top = ev.clientY - this.disY + 'px';
+      }
+
+      up(move, up) {
+        console.log(1);
+        setTimeout(() => {
+          this.box.style.background = 'pink';
+        }, 2000);
+
+
+        document.removeEventListener('mousemove', move);
+        document.removeEventListener('mouseup', up);
+      }
+
+    }
+
+    let d = new Drag('box');
+    d.init();
+  </script>
+</body>
+
+</html>
