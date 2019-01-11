@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background: pink;
+      position: absolute;
+      border-radius: 50%;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+
+  </div>
+  <script>
+    class Drag {
+
+      constructor(id, startColor, endColor, opacity1, opacity2, border, transtion, transform, boxShadow) {
+        this.box = document.getElementById(id);
+        this.disX = 0;
+        this.disY = 0;
+        this.startColor = startColor;
+        this.endColor = endColor;
+        this.opacity1 = opacity1;
+        this.opacity2 = opacity2;
+        this.border = border;
+        this.transtion = transtion;
+        this.transform = transform;
+        this.boxShadow = boxShadow;
+      }
+
+      init() {
+
+        this.box.addEventListener('mousedown', (ev) => {
+          this.down(ev)
+        })
+
+      }
+
+      down(ev) {
+
+        let _this = this
+        this.disX = ev.clientX - this.box.offsetLeft;
+        this.disY = ev.clientY - this.box.offsetTop;
+
+        document.addEventListener('mousemove', move);
+        document.addEventListener('mouseup', up);
+        this.box.style.background = this.startColor;
+        this.box.style.opacity = this.opacity1;
+        this.box.style.border = this.border;
+        this.box.style.transtion = this.transtion;
+        this.box.style.transform = this.transform;
+        this.box.style['box-shadow'] = this.boxShadow;
+
+        function move(ev) {
+          _this.move(ev)
+        }
+
+        function up(m, u) {
+          _this.up(move, up)
+        }
+
+
+      }
+
+      move(ev) {
+        this.box.style.left = ev.clientX - this.disX + 'px';
+        this.box.style.top = ev.clientY - this.disY + 'px';
+      }
+
+      up(move, up) {
+
+        this.box.style.background = this.endColor;
+        this.box.style.opacity = this.opacity2;
+        this.box.style.border = '';
+        this.box.style.transtion = '';
+        this.box.style.transform = '';
+        this.box.style['box-shadow'] = '';
+        document.removeEventListener('mousemove', move);
+        document.removeEventListener('mouseup', up);
+
+      }
+
+    }
+
+    let d = new Drag('box', 'skyblue', 'orange', 0.5, 1.0, '3px solid green', '2s', 'rotateX(30deg)',
+      '10px 10px 5px orange');
+
+    d.init();
+  </script>
+</body>
+
+</html>
